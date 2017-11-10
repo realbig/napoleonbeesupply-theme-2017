@@ -17,6 +17,10 @@ add_action( 'add_meta_boxes', 'nbs_add_mb_product' );
  */
 function nbs_add_mb_product() {
 
+	if ( nbs_field_helpers() === false ) {
+		return;
+	}
+
 	add_meta_box(
 		'nbs-product-featured-image',
 		'Featured Image',

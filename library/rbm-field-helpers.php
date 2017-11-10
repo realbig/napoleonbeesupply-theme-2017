@@ -5,7 +5,6 @@
 
 defined( 'ABSPATH' ) || die();
 
-//add_action( 'muplugins_loaded', 'nbs_field_helpers' );
 /**
  * Gets the Napleon Bee Supply RBM Field Helpers instance.
  *
@@ -13,12 +12,16 @@ defined( 'ABSPATH' ) || die();
  */
 function nbs_field_helpers() {
 
+	if ( ! class_exists( 'RBM_FieldHelpers' ) ) {
+		return false;
+	}
+
 	static $field_helpers;
 
 	if ( $field_helpers === null ) {
 
 		$field_helpers = new RBM_FieldHelpers( array(
-			'ID'   => 'nbs',
+			'ID' => 'nbs',
 		) );
 	}
 
