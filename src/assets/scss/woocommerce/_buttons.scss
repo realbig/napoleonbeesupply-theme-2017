@@ -1,0 +1,36 @@
+.woocommerce {
+  .button,
+  a.button,
+  input.button,
+  button,
+  button.button {
+    border-radius: $button-radius;
+    @include button;
+
+    &:not(.hollow) {
+      border: none;
+    }
+
+    &.disabled {
+      @include button-disabled;
+    }
+
+    //&.hollow {
+    //  @include button-hollow;
+    //  border: $button-hollow-border-width solid;
+    //  text-shadow: $font-text-shadow;
+    //}
+
+    &.large {
+      font-size: map_get($button-sizes, large);
+    }
+
+    &.alt {
+      @include button-style($secondary-color, auto, auto);
+
+      &.disabled {
+        @include button-disabled($secondary-color);
+      }
+    }
+  }
+}

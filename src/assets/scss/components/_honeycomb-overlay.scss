@@ -1,0 +1,27 @@
+.honeycomb-overlay {
+  display: block;
+
+  &.honeycomb-overlay-1 {
+    background-image: url("../images/honeycomb-overlay-1.png");
+    width: 250px;
+    height: 229px;
+
+    @include breakpoint(small only) {
+      background-image: url("../images/honeycomb-overlay-small-1.png");
+      width: 145px;
+      height: 132px;
+    }
+  }
+
+  &.honeycomb-overlay-2 {
+    background-image: url("../images/honeycomb-overlay-2.png");
+    width: 291px;
+    height: 249px;
+
+    @include breakpoint(small only) {
+      background-image: url("../images/honeycomb-overlay-small-2.png");
+      width: 145px;
+      height: 124px
+    }
+  }
+}

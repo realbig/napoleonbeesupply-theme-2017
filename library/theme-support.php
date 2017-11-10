@@ -23,6 +23,12 @@ function foundationpress_theme_support() {
 	// Add menu support
 	add_theme_support( 'menus' );
 
+	// Add WooCommerce support
+	add_theme_support( 'woocommerce' );
+
+	// Let WordPress manage the site logo
+	add_theme_support( 'custom-logo' );
+
 	// Let WordPress manage the document title
 	add_theme_support( 'title-tag' );
 

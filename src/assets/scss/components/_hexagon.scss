@@ -1,0 +1,184 @@
+@mixin hexagon-grid(
+  $item-container-class: 'hexagon-item-container',
+  $item-class: 'hexagon'
+) {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  align-content: space-between;
+  justify-content: space-between;
+
+  @include breakpoint(small only) {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+  @include breakpoint(medium only) {
+    width: 570px;
+    margin: 0 auto;
+  }
+
+  @include breakpoint(large only) {
+    width: 750px;
+    margin: 0 auto;
+  }
+
+  @include breakpoint(xlarge) {
+    width: 100%;
+  }
+
+  &.hexagon-grid-force-small {
+    width: 300px;
+    margin: 0 auto;
+
+    .#{$item-container-class} {
+      height: 135px;
+      flex-basis: auto !important;
+
+      &:nth-child(3n + 1) {
+        flex-basis: 100% !important;
+      }
+    }
+
+    .#{$item-class} {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      float: none !important;
+    }
+  }
+
+  .#{$item-class} {
+    margin: 0 auto;
+  }
+
+  .#{$item-container-class} {
+    @include breakpoint(small only) {
+      height: 135px;
+    }
+
+    @include breakpoint(medium only) {
+      height: 160px;
+    }
+
+    // Small
+    &:nth-child(3n + 1) {
+      @include breakpoint(small only) {
+        flex-basis: 100%;
+      }
+    }
+
+    // Medium
+    &:nth-child(5n + 1),
+    &:nth-child(5n + 2) {
+      @include breakpoint(medium only) {
+        flex-basis: 50%;
+      }
+    }
+
+    &:nth-child(5n + 1) {
+      .#{$item-class} {
+        @include breakpoint(medium only) {
+          margin-right: 10px;
+          float: right;
+        }
+      }
+    }
+
+    &:nth-child(5n + 2) {
+      .#{$item-class} {
+        @include breakpoint(medium only) {
+          margin-left: 10px;
+          float: left;
+        }
+      }
+    }
+
+    // Large
+    &:nth-child(7n + 1),
+    &:nth-child(7n + 2),
+    &:nth-child(7n + 3) {
+      @include breakpoint(large only) {
+        flex-basis: 33.3333%;
+      }
+    }
+  }
+}
+
+@mixin hexagon(
+  $item-text-class: 'hexagon-text',
+  $item-background-class: 'hexagon-background'
+) {
+  position: relative;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  color: $white;
+  width: 142px;
+  height: 163px;
+
+  @include breakpoint(medium) {
+    width: 167px;
+    height: 192px;
+  }
+
+  &.hexagon-force-small {
+    width: 142px;
+    height: 163px;
+  }
+
+  &:hover {
+    &:not(.hexagon-no-cover) {
+      &:before {
+        background: rgba(#000, 0.3);
+      }
+    }
+
+    .#{$item-background-class} {
+      transform: scale(1.1);
+    }
+  }
+
+  &:not(.hexagon-no-cover) {
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(#000, 0.5);
+      z-index: 10;
+      transition: background 300ms;
+    }
+  }
+
+  .#{$item-background-class} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    transition: transform 300ms;
+  }
+
+  .#{$item-text-class} {
+    position: absolute;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 50%;
+    font-family: $header-font-family;
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 15;
+    transform: translateY(-50%);
+  }
+}
+
+.hexagon {
+  @include hexagon;
+}
+
+.hexagon-grid {
+  @include hexagon-grid;
+}

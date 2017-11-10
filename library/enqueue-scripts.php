@@ -42,6 +42,9 @@ if ( ! function_exists( 'foundationpress_scripts' ) ) :
 		// Deregister the jquery version bundled with WordPress.
 		wp_deregister_script( 'jquery' );
 
+		// Font Awesome
+		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/vendor/font-awesome/css/font-awesome.min.css', array(), '4.7.0' );
+
 		// CDN hosted jQuery placed in the header, as some plugins require that jQuery is loaded in the header.
 		wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js', array(), '3.2.1', false );
 

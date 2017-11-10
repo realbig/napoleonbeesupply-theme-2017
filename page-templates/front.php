@@ -2,99 +2,102 @@
 /*
 Template Name: Front
 */
-get_header(); ?>
+get_header();
+// TODO Get hero image
+?>
 
-<header class="front-hero" role="banner">
-	<div class="marketing">
-		<div class="tagline">
-			<h1><?php bloginfo( 'name' ); ?></h1>
-			<h4 class="subheader"><?php bloginfo( 'description' ); ?></h4>
-			<a role="button" class="download large button sites-button hide-for-small-only" href="https://github.com/olefredrik/foundationpress">Download FoundationPress</a>
-		</div>
+    <header class="front-hero" role="banner"
+            style="background-image: url('/wp-content/themes/napoleonbeesupply-theme-2017/dist/assets/images/demo/hero-bg-large.jpg');">
+        <div class="marketing">
+            <div class="tagline">
+                <h1 class="header">Bee Lives Matter</h1>
+                <h4 class="subheader">Dream Interpretation Common Symbols And Their Meanings</h4>
+                <a role="button" class="large button hide-for-small-only" href="#">See Why</a>
+            </div>
+        </div>
 
-		<div class="watch">
-			<span id="stargazers"><a href="https://github.com/olefredrik/foundationpress">1.5k stargazers</a></span>
-			<span id="twitter"><a href="https://twitter.com/olefredrik">@olefredrik</a></span>
-		</div>
-	</div>
+        <span class="honeycomb-overlay honeycomb-overlay-1 overlay-a"></span>
+        <span class="honeycomb-overlay honeycomb-overlay-2 overlay-b"></span>
+        <span class="honeycomb-overlay honeycomb-overlay-1 overlay-c"></span>
+    </header>
 
-</header>
-
-<?php do_action( 'foundationpress_before_content' ); ?>
-<?php while ( have_posts() ) : the_post(); ?>
-<section class="intro" role="main">
-	<div class="fp-intro">
-
-		<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
-			<?php do_action( 'foundationpress_page_before_entry_content' ); ?>
-			<div class="entry-content">
-				<?php the_content(); ?>
-			</div>
-			<footer>
+<?php $categories = get_terms( array( 'taxonomy' => 'product_cat', 'hide_empty' => false ) ); ?>
+<?php if ( $categories ) : ?>
+    <section class="product-categories">
+        <div class="hexagon-grid">
+			<?php foreach ( $categories as $category ) : ?>
 				<?php
-					wp_link_pages(
-						array(
-							'before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'foundationpress' ),
-							'after'  => '</p></nav>',
-						)
-					);
+				$thumbnail_ID   = get_woocommerce_term_meta( $category->term_id, 'thumbnail_id', true );
+				$category_image = wp_get_attachment_url( $thumbnail_ID );
 				?>
-				<p><?php the_tags(); ?></p>
-			</footer>
-			<?php do_action( 'foundationpress_page_before_comments' ); ?>
-			<?php comments_template(); ?>
-			<?php do_action( 'foundationpress_page_after_comments' ); ?>
-		</div>
+                <div class="hexagon-item-container">
+                    <div class="product-category hexagon">
+                        <div class="hexagon-background"
+                             style="background-image: url('<?php echo esc_attr( $category_image ); ?>');"></div>
+                        <p class="hexagon-text"><?php echo $category->name; ?></p>
+                    </div>
+                </div>
+			<?php endforeach; ?>
+        </div>
+    </section>
+<?php endif; ?>
 
-	</div>
+<?php
+$featured_product_IDs = wc_get_featured_product_ids();
+$featured_product_ID  = false;
 
-</section>
-<?php endwhile;?>
-<?php do_action( 'foundationpress_after_content' ); ?>
+if ( $featured_product_IDs ) {
 
-<div class="section-divider">
-	<hr />
-</div>
+	$featured_product_ID = array_shift( $featured_product_IDs );
+}
+?>
 
+<?php if ( $featured_product_ID ) : ?>
+    <section class="featured-product">
+		<?php
+		$featured_product  = wc_get_product( $featured_product_ID );
+		$featured_image_ID = nbs_field_helpers()->fields->get_field( 'featured_image', $featured_product_ID );
+		$featured_image    = wp_get_attachment_image_url( $featured_image_ID, 'full' );
 
-<section class="benefits">
-	<header>
-		<h2>Build Foundation based sites, powered by WordPress</h2>
-		<h4>Foundation is the professional choice for designers, developers and teams. <br /> WordPress is by far, <a href="http://trends.builtwith.com/cms">the world's most popular CMS</a> (currently powering 38% of the web).</h4>
-	</header>
+		if ( $featured_image ) : ?>
+            <div class="featured-product-featured-image"
+                 style="background-image: url('<?php echo esc_attr( $featured_image ); ?>');">
+                <span class="honeycomb-overlay honeycomb-overlay-2"></span>
+            </div>
+		<?php endif; ?>
 
-	<div class="semantic">
-		<img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/assets/images/demo/semantic.svg" alt="semantic">
-		<h3>Semantic</h3>
-		<p>Everything is semantic. You can have the cleanest markup without sacrificing the utility and speed of Foundation.</p>
-	</div>
+        <article class="featured-product-product">
+            <div class="featured-product-container">
+                <div class="featured-product-image">
+                    <div class="featured-product-image-container hexagon hexagon-no-cover">
+						<?php echo $featured_product->get_image(); ?>
+                    </div>
+                </div>
 
-	<div class="responsive">
-		<img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/assets/images/demo/responsive.svg" alt="responsive">
-		<h3>Responsive</h3>
-		<p>You can build for small devices first. Then, as devices get larger and larger, layer in more complexity for a complete responsive design.</p>
+                <div class="featured-product-content">
+                    <h1 class="featured-product-title">
+                        Featured: <?php echo $featured_product->get_title(); ?>
+                    </h1>
 
-	</div>
+                    <p class="featured-product-price">
+						<?php echo $featured_product->get_price_html(); ?>
+                    </p>
 
-	<div class="customizable">
-		<img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/assets/images/demo/customizable.svg" alt="customizable">
-		<h3>Customizable</h3>
-		<p>You can customize your build to include or remove certain elements, as well as define the size of columns, colors, font size and more.</p>
+                    <div class="featured-product-excerpt">
+						<?php echo $featured_product->get_short_description(); ?>
+                    </div>
 
-	</div>
+					<?php
+					echo WC_Shortcodes::product_add_to_cart( array(
+						'id'         => $featured_product_ID,
+						'show_price' => false,
+						'style'      => '',
+					) ); ?>
+                </div>
+            </div>
+        </article>
+    </section>
+<?php endif; ?>
 
-	<div class="professional">
-		<img src="<?php echo get_stylesheet_directory_uri(); ?>/dist/assets/images/demo/professional.svg" alt="professional">
-		<h3>Professional</h3>
-		<p>Millions of designers and developers depend on Foundation. We have business support, training and consulting to help grow your product or service.</p>
-	</div>
-
-	<div class="why-foundation">
-		<a href="/kitchen-sink">See what's in Foundation out of the box →</a>
-	</div>
-
-</section>
-
-
-
-<?php get_footer();
+<?php
+get_footer();
