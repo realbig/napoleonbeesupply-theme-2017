@@ -3,16 +3,22 @@
 Template Name: Front
 */
 get_header();
-// TODO Get hero image
 ?>
 
     <header class="front-hero" role="banner"
-            style="background-image: url('/wp-content/themes/napoleonbeesupply-theme-2017/dist/assets/images/demo/hero-bg-large.jpg');">
+		<?php echo nbs_get_featured_interchange( get_post_thumbnail_id( $post->ID ) ); ?>>
         <div class="marketing">
             <div class="tagline">
-                <h1 class="header">Bee Lives Matter</h1>
-                <h4 class="subheader">Dream Interpretation Common Symbols And Their Meanings</h4>
-                <a role="button" class="large button hide-for-small-only" href="#">See Why</a>
+                <h1 class="header"><?php the_title(); ?></h1>
+                <h4 class="subheader"><?php echo nbs_field_helpers()->fields->get_meta_field( 'subhead' ); ?></h4>
+
+				<?php $hero_page_link_ID = nbs_field_helpers()->fields->get_meta_field( 'hero_page_link' ); ?>
+				<?php if ( $hero_page_link_ID ) : ?>
+                    <a role="button" class="large button hide-for-small-only"
+                       href="<?php echo get_permalink( $hero_page_link_ID ); ?>">
+						<?php echo nbs_field_helpers()->fields->get_meta_field( 'hero_page_link_text' ); ?>
+                    </a>
+				<?php endif; ?>
             </div>
         </div>
 

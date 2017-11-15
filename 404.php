@@ -12,7 +12,7 @@ get_header(); ?>
 	<main class="main-content">
 		<article>
 			<header>
-				<h1 class="entry-title"><?php _e( 'File Not Found', 'foundationpress' ); ?></h1>
+				<h1 class="entry-title"><?php _e( 'Page Not Found', 'foundationpress' ); ?></h1>
 			</header>
 			<div class="entry-content">
 				<div class="error">

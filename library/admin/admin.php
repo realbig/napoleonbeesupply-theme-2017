@@ -7,4 +7,5 @@
 
 defined( 'ABSPATH' ) || die();
 
+require_once( 'custom-meta/home.php' );
 require_once( 'custom-meta/product.php' );
