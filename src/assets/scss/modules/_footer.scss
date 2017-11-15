@@ -19,7 +19,11 @@
   color: $white;
 
   @include breakpoint(medium) {
-    max-width: 80%;
+    max-width: calc(100% - 291px); // 291 is width of honeycomb overlay on right of footer
+  }
+
+  @include breakpoint(xxlarge) {
+    @include xy-grid-container(rem-calc($grid-row-width-wide));
   }
 
   section {

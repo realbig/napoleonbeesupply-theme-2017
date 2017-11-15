@@ -1,5 +1,5 @@
 // Page header
-.front-hero {
+.off-canvas-content .front-hero {
   .marketing {
     @include xy-grid-container(55rem);
     @include xy-grid;
@@ -90,10 +90,10 @@
 }
 
 // Product Categories
-.product-categories {
+.off-canvas-content .product-categories {
   @include xy-grid-container(map_get($breakpoints, xxlarge));
   @include xy-grid;
-  @include xy-cell;
+  @include xy-cell($gutter-type: padding);
   margin-bottom: rem-calc(72);
 
   @include breakpoint(medium) {
@@ -107,9 +107,9 @@
 }
 
 // Featured Product
-.featured-product {
+.off-canvas-content .featured-product {
   @include xy-grid;
-  background: url("../images/featured-product-background.jpg") no-repeat;
+  background: url("../images/background-honey.jpg") no-repeat;
   background-size: cover;
 
   @include breakpoint(medium) {
@@ -185,7 +185,7 @@
     }
 
     .featured-product-content {
-      color: #816319;
+      color: $brown;
 
       @include breakpoint(large) {
         @include xy-cell(8);
@@ -201,7 +201,7 @@
       font-size: 1.4rem;
 
       del {
-        color: mix(#fff, #816319, 30%);
+        color: mix(#fff, $brown, 30%);
       }
 
       ins {

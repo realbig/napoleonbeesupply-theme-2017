@@ -1,0 +1,53 @@
+.woocommerce-message,
+.woocommerce-info,
+.woocommerce-error {
+  border: none;
+  background: $primary-color;
+  color: $white;
+  padding: 0;
+  margin: 0;
+  font-style: italic;
+  margin-bottom: $paragraph-margin-bottom;
+
+  &:before {
+    content: none;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+
+    &.showlogin,
+    &.showcoupon {
+      float: right;
+    }
+  }
+
+  .woocommerce-notice-content {
+    @include xy-grid-container;
+    @include xy-gutters($grid-margin-gutters, padding);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    .button {
+      display: inline !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      line-height: initial !important;
+      font-weight: inherit !important;
+      text-decoration: underline !important;
+      font-style: inherit;
+      font-family: inherit !important;
+      font-size: inherit !important;
+      background: none !important;
+    }
+  }
+}
+
+.woocommerce-message {
+  background: $success-color;
+}
+
+.woocommerce-error {
+  background: $alert-color;
+}

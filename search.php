@@ -38,7 +38,6 @@ get_header(); ?>
 	<?php endif; ?>
 	
 	</main>
-<?php get_sidebar(); ?>
 
 </div>
 

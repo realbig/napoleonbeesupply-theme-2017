@@ -1,27 +1,58 @@
-.honeycomb-overlay {
+@mixin nbs-honeycomb-overlay(
+  $images: false,
+  $dimensions: false
+) {
   display: block;
 
-  &.honeycomb-overlay-1 {
-    background-image: url("../images/honeycomb-overlay-1.png");
-    width: 250px;
-    height: 229px;
+  // Dimensions
+  @include dimension-map($dimensions);
 
-    @include breakpoint(small only) {
-      background-image: url("../images/honeycomb-overlay-small-1.png");
-      width: 145px;
-      height: 132px;
+  // Images
+  @each $breakpoint, $image in $images {
+    @include breakpoint($breakpoint) {
+      background-image: url(#{$image});
     }
   }
+}
 
-  &.honeycomb-overlay-2 {
-    background-image: url("../images/honeycomb-overlay-2.png");
-    width: 291px;
-    height: 249px;
+@mixin nbs-do-honeycomb-overlays {
+  .honeycomb-overlay {
+    &.honeycomb-overlay-1 {
+      @include nbs-honeycomb-overlay(
+              $images: (
+                      small: "../images/honeycomb-overlay-small-1.png",
+                      medium:"../images/honeycomb-overlay-1.png"
+              ),
+              $dimensions: (
+                      small: (
+                              width: 145px,
+                              height: 132px
+                      ),
+                      medium: (
+                              width: 250px,
+                              height: 229px
+                      )
+              )
+      );
+    }
 
-    @include breakpoint(small only) {
-      background-image: url("../images/honeycomb-overlay-small-2.png");
-      width: 145px;
-      height: 124px
+    &.honeycomb-overlay-2 {
+      @include nbs-honeycomb-overlay(
+              $images: (
+                      small: "../images/honeycomb-overlay-small-2.png",
+                      medium:"../images/honeycomb-overlay-2.png"
+              ),
+              $dimensions: (
+                      small: (
+                              width: 145px,
+                              height: 124px
+                      ),
+                      medium: (
+                              width: 291px,
+                              height: 249px
+                      )
+              )
+      );
     }
   }
 }

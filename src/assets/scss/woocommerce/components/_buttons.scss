@@ -1,11 +1,13 @@
 .woocommerce {
   .button,
   a.button,
-  input.button,
-  button,
-  button.button {
-    border-radius: $button-radius;
+  button.button,
+  input#submit,
+  input[type="button"].button,
+  input[type="submit"].button,
+  #respond input#submit{
     @include button;
+    border-radius: $button-radius;
 
     &:not(.hollow) {
       border: none;
@@ -26,11 +28,12 @@
     }
 
     &.alt {
-      @include button-style($secondary-color, auto, auto);
+      @include button-style(map_get($button-palette, secondary), auto, auto);
 
       &.disabled {
-        @include button-disabled($secondary-color);
+        @include button-disabled(map_get($button-palette, secondary));
       }
     }
+
   }
 }

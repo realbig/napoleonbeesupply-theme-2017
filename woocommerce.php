@@ -10,10 +10,9 @@
 
 get_header(); ?>
 
-<div class="main-wrap">
+<div class="main-wrap full-width">
 	<main class="main-content">
 		<?php woocommerce_content(); ?>
 	</main>
-<?php get_sidebar(); ?>
 </div>
 <?php get_footer();

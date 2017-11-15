@@ -23,7 +23,7 @@ get_header(); ?>
 
 		<?php /* Start the Loop */ ?>
 		<?php while ( have_posts() ) : the_post(); ?>
-			<?php get_template_part( 'template-parts/content', get_post_format() ); ?>
+			<?php get_template_part( 'template-parts/content', 'loop' ); ?>
 		<?php endwhile; ?>
 
 		<?php else : ?>
@@ -44,7 +44,6 @@ get_header(); ?>
 		<?php endif; ?>
 
 	</main>
-	<?php get_sidebar(); ?>
 
 </div>
 

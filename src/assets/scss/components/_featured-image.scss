@@ -1,14 +1,20 @@
-.featured-hero {
+@mixin nbs-featured-image {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: rem-calc(100);
+  height: rem-calc(200);
 
   @include breakpoint(medium) {
-    height: rem-calc(200);
+    height: rem-calc(400);
   }
 
-  @include breakpoint(xlarge) {
-    height: rem-calc(400);
+  @include breakpoint(large) {
+    height: rem-calc(600);
+  }
+}
+
+@mixin nbs-do-featured-images {
+  .featured-hero {
+    @include nbs-featured-image;
   }
 }

@@ -1,0 +1,28 @@
+.woocommerce-archive-header {
+  background: url("../images/background-hive-yellow.jpg") no-repeat center;
+  background-size: cover;
+  color: $brown;
+  padding: 3rem 0 1rem 0;
+  margin-bottom: 3rem;
+
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+
+  .woocommerce-archive-header-container {
+    @include xy-grid-container;
+    @include xy-grid-container-padding;
+  }
+
+  .page-title {
+    color: inherit;
+  }
+
+  .woocommerce-archive-header-results {
+    border-top: 3px solid;
+    padding-top: 2rem;
+    margin-top: 2rem;
+  }
+}

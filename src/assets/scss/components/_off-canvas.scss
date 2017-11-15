@@ -1,8 +1,12 @@
-.off-canvas {
+@mixin nbs-off-canvas {
   color: $white;
   width: 100%;
-  background: url("../images/off-canvas-menu-background.jpg") repeat-y;
+  background: url("../images/background-hive-red.jpg") repeat-y;
   background-size: cover;
+
+  @include breakpoint(large) {
+    padding-top: 1rem;
+  }
 
   @include breakpoint(large) {
     width: $offcanvas-size;
@@ -44,6 +48,7 @@
     height: 50px;
     color: $white;
     font-family: $header-font-family;
+    cursor: pointer;
 
     @include breakpoint(small only) {
       font-size: 1.4rem;
@@ -61,6 +66,7 @@
       position: absolute;
       right: 100%;
       width: 11rem;
+      top: 0;
       height: 90px;
     }
 
@@ -85,7 +91,7 @@
   }
 }
 
-.off-canvas-content {
+@mixin nbs-off-canvas-content {
   &.is-open-right {
     &.has-transition-push {
       transform: translateX(-100%);
@@ -94,5 +100,15 @@
         transform: translateX(-#{$offcanvas-size});
       }
     }
+  }
+}
+
+@mixin nbs-do-off-canvas {
+  .off-canvas {
+    @include nbs-off-canvas;
+  }
+
+  .off-canvas-content {
+    @include nbs-off-canvas-content;
   }
 }

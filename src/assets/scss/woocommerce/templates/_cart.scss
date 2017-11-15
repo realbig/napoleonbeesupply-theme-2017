@@ -1,0 +1,11 @@
+body.woocommerce-cart {
+  table.shop_table {
+    border-radius: 0;
+
+    td.actions {
+      #coupon_code {
+        width: 12em;
+      }
+    }
+  }
+}

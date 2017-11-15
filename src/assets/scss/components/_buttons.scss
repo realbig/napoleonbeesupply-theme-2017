@@ -1,8 +1,14 @@
-.sites-button {
-  background: $primary-color;
-  font-size: 1.25rem;
+@mixin nbs-button {
   font-weight: bold;
-  box-shadow: 0 -2px 0 rgba(0,0,0,0.2) inset;
-  border-radius: 3px;
-  border: none;
+  color: $white;
+
+  &.tertiary {
+    color: $white !important;
+  }
+}
+
+@mixin nbs-do-buttons {
+  .button {
+    @include nbs-button;
+  }
 }

@@ -1,0 +1,20 @@
+body.tax-product_cat,
+body.post-type-archive-product {
+  ul.products {
+    @include xy-grid;
+    @include xy-grid-container($width: $grid-row-width-wide);
+
+    > li.product {
+      @include xy-cell(12);
+      float: none;
+
+      @include breakpoint(medium) {
+        @include xy-cell(4);
+      }
+
+      @include breakpoint(large) {
+        @include xy-cell(3);
+      }
+    }
+  }
+}

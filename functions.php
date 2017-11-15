@@ -51,6 +51,9 @@ require_once( 'library/sticky-posts.php' );
 /** Configure responsive image sizes */
 require_once( 'library/responsive-images.php' );
 
+/** WooCommerce support */
+require_once( 'library/woocommerce.php' );
+
 /** Add RBM Field Helpers */
 require_once( 'library/rbm-field-helpers.php' );
 

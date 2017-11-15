@@ -1,0 +1,11 @@
+body.single-post {
+  article.post.has-post-thumbnail {
+    top: -10rem;
+
+    header {
+      @include breakpoint(xlarge) {
+        margin-left: 0;
+      }
+    }
+  }
+}

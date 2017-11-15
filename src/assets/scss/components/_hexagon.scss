@@ -1,3 +1,7 @@
+@mixin hexagon-shape {
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
 @mixin hexagon-grid(
   $item-container-class: 'hexagon-item-container',
   $item-class: 'hexagon'
@@ -108,9 +112,10 @@
   $item-text-class: 'hexagon-text',
   $item-background-class: 'hexagon-background'
 ) {
+  @include hexagon-shape;
+  display: block;
   position: relative;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  color: $white;
+  color: $white !important;
   width: 142px;
   height: 163px;
 
@@ -145,6 +150,7 @@
       height: 100%;
       width: 100%;
       background: rgba(#000, 0.5);
+      pointer-events: none;
       z-index: 10;
       transition: background 300ms;
     }
@@ -175,10 +181,12 @@
   }
 }
 
-.hexagon {
-  @include hexagon;
-}
+@mixin nbs-do-hexagons {
+  .hexagon {
+    @include hexagon;
+  }
 
-.hexagon-grid {
-  @include hexagon-grid;
+  .hexagon-grid {
+    @include hexagon-grid;
+  }
 }

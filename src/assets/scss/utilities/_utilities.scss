@@ -1,0 +1,8 @@
+@mixin dimension-map($dimensions) {
+  @each $breakpoint, $dimension in $dimensions {
+    @include breakpoint($breakpoint) {
+      width: map_get($dimension, width);
+      height: map_get($dimension, height);
+    }
+  }
+}

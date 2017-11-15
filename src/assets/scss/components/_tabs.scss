@@ -1,0 +1,44 @@
+@mixin nbs-tab-title {
+  margin-right: 1rem;
+
+  &.active {
+    > a {
+      &:before {
+        height: 3px;
+      }
+    }
+  }
+
+  > a {
+    position: relative;
+    padding-bottom: 0.5rem;
+
+    &:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: $body-font-color;
+      transition: height 150ms;
+    }
+  }
+}
+
+@mixin nbs-tabs-panel {
+  border: none;
+  padding: 1rem 0 0;
+}
+
+@mixin nbs-do-tabs {
+  .tabs {
+    > li {
+      @include nbs-tab-title;
+    }
+  }
+
+  .tabs-panel {
+    @include nbs-tabs-panel;
+  }
+}

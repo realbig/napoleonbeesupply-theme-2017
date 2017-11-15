@@ -1,0 +1,44 @@
+.woocommerce,
+.woocommerce div.product {
+  .woocommerce-tabs {
+
+    ul.tabs.wc-tabs {
+      @include tabs-container;
+      padding: 0;
+
+      &:before {
+        content: none;
+      }
+
+      > li {
+
+        // Reset WC Styles
+        background: none;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+        display: initial;
+        position: initial;
+
+        @include tabs-title;
+        @include nbs-tab-title;
+
+        &.active {
+          background: $tab-background-active;
+          color: $tab-active-color;
+        }
+
+        > a {
+          font-family: $header-font-family;
+        }
+      }
+    }
+
+    .wc-tab {
+      @include tabs-content;
+      @include tabs-panel;
+      @include nbs-tabs-panel;
+    }
+  }
+}

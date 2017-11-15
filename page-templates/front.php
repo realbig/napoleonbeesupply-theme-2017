@@ -32,8 +32,8 @@ get_header();
 				?>
                 <div class="hexagon-item-container">
                     <div class="product-category hexagon">
-                        <div class="hexagon-background"
-                             style="background-image: url('<?php echo esc_attr( $category_image ); ?>');"></div>
+                        <a href="<?php echo get_term_link( $category ); ?>" class="hexagon-background"
+                           style="background-image: url('<?php echo esc_attr( $category_image ); ?>');"></a>
                         <p class="hexagon-text"><?php echo $category->name; ?></p>
                     </div>
                 </div>
@@ -87,12 +87,9 @@ if ( $featured_product_IDs ) {
 						<?php echo $featured_product->get_short_description(); ?>
                     </div>
 
-					<?php
-					echo WC_Shortcodes::product_add_to_cart( array(
-						'id'         => $featured_product_ID,
-						'show_price' => false,
-						'style'      => '',
-					) ); ?>
+                    <a href="<?php echo $featured_product->get_permalink(); ?>" class="button large tertiary">
+                        View Product
+                    </a>
                 </div>
             </div>
         </article>

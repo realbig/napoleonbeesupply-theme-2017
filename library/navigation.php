@@ -21,7 +21,10 @@ register_nav_menus( array(
 if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
 	function foundationpress_top_bar_r() {
 
-		$catalog_toggle = '<li id="menu-item-catalog" class="menu-item menu-item-catalog"><a href="#" data-toggle="off-canvas-menu">Catalog</a></li>';
+		$cart_count = WC()->cart->get_cart_contents_count();
+		$cart_icon  = $cart_count > 0 ? "&nbsp;<span class=\"fa fa-shopping-cart\"></span>&nbsp;({$cart_count})" : '';
+
+		$catalog_toggle = "<li id=\"menu-item-catalog\" class=\"menu-item menu-item-catalog\"><a href=\"#\" data-toggle=\"off-canvas-menu\">Shop {$cart_icon}</a></li>";
 
 		wp_nav_menu( array(
 			'container'      => false,

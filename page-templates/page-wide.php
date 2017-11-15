@@ -14,7 +14,7 @@
 
  <?php get_template_part( 'template-parts/featured-image' ); ?>
 
- <div class="main-wrap">
+ <div class="main-wrap wide">
 	 <main class="main-content">
 		 <?php while ( have_posts() ) : the_post(); ?>
 		 	<?php get_template_part( 'template-parts/content', 'page' ); ?>

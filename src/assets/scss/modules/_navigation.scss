@@ -21,6 +21,20 @@
 }
 
 .off-canvas {
+  .woocommerce-cart {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: $paragraph-margin-bottom;
+
+    a {
+      color: inherit;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
   > ul.menu {
     @include hide-for(large);
     @include hexagon-grid(
@@ -82,6 +96,9 @@
 
   .menu-icon {
     @include hamburger($color: $titlebar-icon-color, $color-hover: $titlebar-icon-color-hover, $weight: 6px, $height: 30px, $width: 35px);
+
+    // WooCommerce override
+    background-color: transparent !important;
   }
 }
 

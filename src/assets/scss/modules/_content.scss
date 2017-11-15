@@ -1,57 +1,33 @@
 .main-wrap {
-  @include xy-grid-container;
-  @include xy-grid();
+  @include xy-grid;
   margin-top: 1rem;
+  min-height: 400px;
+
+  &:not(.full-width) {
+
+    &:not(.wide){
+      @include xy-grid-container;
+    }
+
+    &.wide {
+      @include xy-grid-container($width: rem-calc($grid-row-width-wide));
+    }
+  }
 
   @include breakpoint(medium) {
     margin-top: 3rem;
   }
 
-  &.sidebar-left {
-
-    // Place the sidebar below main content on small screens ...
-      @include breakpoint(small) {
-        .main-content { order: 1; }
-        .sidebar { order: 2; }
-      }
-
-    // ... and to the left on medium-up screens, when using the sidebar-left template
-      @include breakpoint(medium) {
-        .main-content { order: 2; }
-        .sidebar { order: 1; }
-      }
-  }
-
-  // Full width template
-  &.full-width {
-    .main-content {
-      @include xy-cell(12);
-    }
-  }
-
   .main-content {
-
-    // Default template
-    @include breakpoint(small) {
-      @include xy-cell(12);
-    }
-
-    @include breakpoint(medium) {
-      @include xy-cell(8);
-    }
-
+    @include xy-cell(12);
+    margin-top: 2rem;
   }
 
-  .sidebar {
-
-    @include breakpoint(small) {
-      @include xy-cell(12);
-    }
-
-    @include breakpoint(medium) {
-      @include xy-cell(4);
-      margin-top: 1rem;
-    }
-
+  .entry-title,
+  .page-title {
+    font-family: $body-font-family;
+    color: $dark-gray;
+    font-size: rem-calc(26);
+    margin-bottom: 1rem;
   }
 }
