@@ -49,12 +49,17 @@ get_header();
 <?php endif; ?>
 
 <?php
-$featured_product_IDs = wc_get_featured_product_ids();
-$featured_product_ID  = false;
+$featured_products   = get_posts( array(
+	'post_type'   => 'product',
+	'numberposts' => 1,
+	'meta_key'    => 'nbs_featured_status',
+	'meta_value'  => 'featured',
+) );
+$featured_product_ID = false;
 
-if ( $featured_product_IDs ) {
+if ( $featured_products ) {
 
-	$featured_product_ID = array_shift( $featured_product_IDs );
+	$featured_product_ID = $featured_products[0]->ID;
 }
 ?>
 
@@ -99,6 +104,50 @@ if ( $featured_product_IDs ) {
                 </div>
             </div>
         </article>
+    </section>
+<?php endif; ?>
+
+<?php
+$subfeatured_products = get_posts( array(
+	'post_type'   => 'product',
+	'numberposts' => 4,
+	'meta_key'    => 'nbs_featured_status',
+	'meta_value'  => 'sub_featured',
+) );
+?>
+
+<?php if ( $subfeatured_products ): ?>
+    <section class="subfeatured-products subfeatured-products-count-<?php echo count( $subfeatured_products ); ?>">
+
+		<?php foreach ( $subfeatured_products as $product ) : ?>
+
+			<?php $product = wc_get_product( $product ); ?>
+
+            <article class="subfeatured-product">
+                <div class="featured-product-image">
+                    <div class="featured-product-image-container hexagon hexagon-no-cover">
+						<?php echo $product->get_image(); ?>
+                    </div>
+
+                    <h1 class="featured-product-title">
+                        <?php echo $product->get_title(); ?>
+                    </h1>
+
+                    <p class="featured-product-price">
+						<?php echo $product->get_price_html(); ?>
+                    </p>
+
+                    <div class="featured-product-excerpt">
+						<?php echo $product->get_short_description(); ?>
+                    </div>
+
+                    <a href="<?php echo $product->get_permalink(); ?>" class="button primary">
+                        View Product
+                    </a>
+                </div>
+            </article>
+		<?php endforeach; ?>
+
     </section>
 <?php endif; ?>
 
