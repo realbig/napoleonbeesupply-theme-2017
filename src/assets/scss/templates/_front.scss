@@ -99,7 +99,6 @@ body.page-template-front {
 
     @include breakpoint(medium) {
       align-items: stretch;
-      margin-bottom: rem-calc(72);
     }
 
     .product-category {
@@ -112,6 +111,7 @@ body.page-template-front {
     @include xy-grid;
     background: url("../images/background-honey.jpg") no-repeat;
     background-size: cover;
+    margin-bottom: rem-calc(72);
 
     @include breakpoint(medium) {
       height: rem-calc(600);
