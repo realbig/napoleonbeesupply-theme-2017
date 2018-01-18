@@ -135,10 +135,6 @@
         background: rgba(#000, 0.3);
       }
     }
-
-    .#{$item-background-class} {
-      transform: scale(1.1);
-    }
   }
 
   &:not(.hexagon-no-cover) {
@@ -169,7 +165,6 @@
     width: 100%;
     background-position: center;
     background-size: cover;
-    transition: transform 300ms;
   }
 
   .#{$item-text-class} {

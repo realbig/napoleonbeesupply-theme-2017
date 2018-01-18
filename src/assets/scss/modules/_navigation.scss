@@ -46,6 +46,12 @@
       position: relative;
       @include hexagon;
 
+      &:hover {
+        .hexagon-background {
+          background: lighten($secondary-color, 10%);
+        }
+      }
+
       .hexagon-background {
         background: $secondary-color;
       }
