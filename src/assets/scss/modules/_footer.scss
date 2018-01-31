@@ -41,6 +41,7 @@
 
       .custom-logo {
         margin-bottom: 1rem;
+        max-width: 350px;
 
         @include breakpoint(small only) {
           max-width: calc(100% - 145px); // Account for honeycomb overlay
