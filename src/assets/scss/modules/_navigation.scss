@@ -10,9 +10,13 @@
 }
 
 // Site title
-.site-desktop-title {
+.site-desktop-title, .site-mobile-title {
   .custom-logo {
     max-height: 75px;
+  }
+
+  img {
+    width: auto;
   }
 
   a {

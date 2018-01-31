@@ -29,7 +29,7 @@
 
 	<?php foundationpress_mobile_nav(); ?>
 
-	<?php $categories = get_terms( array( 'taxonomy' => 'product_cat', 'hide_empty' => false ) ); ?>
+	<?php $categories = get_terms( array( 'taxonomy' => 'product_cat', 'hide_empty' => false, 'parent' => 0 ) ); ?>
 	<?php if ( $categories ) : ?>
 
         <h2 class="off-canvas-section-title">Catalog</h2>

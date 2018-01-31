@@ -27,7 +27,7 @@ get_header();
         <span class="honeycomb-overlay honeycomb-overlay-1 overlay-c"></span>
     </header>
 
-<?php $categories = get_terms( array( 'taxonomy' => 'product_cat', 'hide_empty' => false ) ); ?>
+<?php $categories = get_terms( array( 'taxonomy' => 'product_cat', 'hide_empty' => false, 'parent' => 0 ) ); ?>
 <?php if ( $categories ) : ?>
     <section class="product-categories">
         <div class="hexagon-grid">
