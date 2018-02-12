@@ -1,7 +1,7 @@
 @mixin nbs-off-canvas {
   color: $white;
   width: 100%;
-  background: url("../images/background-hive-red.jpg") repeat-y;
+  background: url("../images/off-canvas-background.jpg") repeat-y;
   background-size: cover;
 
   @include breakpoint(large) {
