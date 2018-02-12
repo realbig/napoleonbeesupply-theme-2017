@@ -126,6 +126,7 @@ body.page-template-front {
       height: rem-calc(300);
       width: 100%;
       background-position: center;
+      background-size: cover;
 
       @include breakpoint(medium) {
         @include xy-cell($size: 4, $gutter-output: false);
