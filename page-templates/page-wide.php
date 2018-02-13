@@ -1,5 +1,7 @@
 <?php
 /**
+ * Template Name: Page Wide
+ *
  * The template for displaying pages
  *
  * This is the template that displays all pages by default.

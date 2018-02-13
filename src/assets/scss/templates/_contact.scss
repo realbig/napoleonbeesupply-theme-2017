@@ -1,0 +1,87 @@
+body.page-template-contact {
+  .main-wrap {
+    margin-top: 0;
+  }
+
+  .main-content {
+    margin: 0;
+    width: 100%;
+
+    .contact-upper {
+      background: url("../images/hive-yellow.jpg") no-repeat center;
+      background-size: cover;
+      color: $brown;
+      padding: 3rem 0 0 0;
+      margin-bottom: 3rem;
+
+      &:after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+
+      .entry-title {
+        color: inherit;
+      }
+
+      .contact-container {
+        @include xy-grid-container;
+        @include xy-grid-container-padding;
+      }
+    }
+
+    .contact-lower {
+      @include xy-grid;
+      @include xy-grid-container($width: map_get($breakpoints, xxlarge));
+
+      .contact-container-left {
+        @include xy-cell(6);
+      }
+
+      .contact-container-right {
+        @include xy-cell(6);
+      }
+    }
+
+    .contact-map {
+      position: relative;
+      margin-top: 3rem;
+
+      &:hover {
+        a:before, .contact-map-text {
+          opacity: 1;
+        }
+      }
+
+      a {
+        display: block;
+      }
+
+      a:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(mix($secondary-color, $black, 50%), 0.75);
+        opacity: 0;
+        transition: opacity 300ms;
+      }
+
+      .contact-map-text {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 100%;
+        text-align: center;
+        color: $white;
+        font-weight: bold;
+        font-size: 1.5rem;
+        opacity: 0;
+        transform: translateY(-50%);
+        transition: opacity 300ms;
+      }
+    }
+  }
+}
