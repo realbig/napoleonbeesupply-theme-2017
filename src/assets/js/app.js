@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import whatInput from 'what-input';
+import './bee-order-form';
 
 window.$ = $;
 

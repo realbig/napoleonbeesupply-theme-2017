@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 40);
+/******/ 	return __webpack_require__(__webpack_require__.s = 41);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -4618,11 +4618,13 @@ var _whatInput = __webpack_require__(38);
 
 var _whatInput2 = _interopRequireDefault(_whatInput);
 
+__webpack_require__(39);
+
 var _foundationSites = __webpack_require__(20);
 
 var _foundationSites2 = _interopRequireDefault(_foundationSites);
 
-__webpack_require__(39);
+__webpack_require__(40);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -12415,6 +12417,55 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 "use strict";
 
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var NBS_BeeOrderForm = function () {
+    function NBS_BeeOrderForm() {
+        _classCallCheck(this, NBS_BeeOrderForm);
+
+        this.$orderForm = $('#nbs-bee-order-form');
+
+        if (!this.$orderForm.length) {
+
+            return;
+        }
+
+        this.quantityFields();
+    }
+
+    _createClass(NBS_BeeOrderForm, [{
+        key: 'quantityFields',
+        value: function quantityFields() {
+
+            var $fields = this.$orderForm.find('.nbs-bee-order-form-qty');
+
+            $fields.change(this.quantityChange);
+        }
+    }, {
+        key: 'quantityChange',
+        value: function quantityChange() {
+
+            var product = $(this).attr('data-product');
+            var $addToCartButton = $('a.ajax_add_to_cart[data-product_id="' + product + '"]');
+
+            $addToCartButton.attr('data-quantity', $(this).val());
+        }
+    }]);
+
+    return NBS_BeeOrderForm;
+}();
+
+new NBS_BeeOrderForm();
+
+/***/ }),
+/* 40 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var _jquery = __webpack_require__(0);
 
 var _jquery2 = _interopRequireDefault(_jquery);
@@ -12433,7 +12484,7 @@ _jquery2.default.ajax({
 });
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(19);

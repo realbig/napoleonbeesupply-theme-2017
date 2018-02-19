@@ -16,6 +16,8 @@ add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_close_div', 99 );
 add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_close_div', 100 );
 add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_close_div', 101 );
 
+add_filter( 'woocommerce_price_format', 'nbs_wc_price_format' );
+
 /**
  * WooCommerce template before shop loop.
  *
@@ -60,4 +62,11 @@ function nbs_wc_template_close_div() {
 	?>
     </div>
 	<?php
+}
+
+/**
+ */
+function nbs_wc_price_format( $format ) {
+
+	return '%1$s<span class="price-amount">%2$s</span>';
 }

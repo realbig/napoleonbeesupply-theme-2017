@@ -29,3 +29,25 @@ function nbs_field_helpers() {
 }
 
 nbs_field_helpers();
+
+/**
+ * Gets a field description tip.
+ *
+ * @since {{VERSION}}
+ *
+ * @param string $description Description text.
+ */
+function nbs_fieldhelpers_get_field_tip( $description ) {
+
+	ob_start();
+	?>
+	<div class="fieldhelpers-field-description fieldhelpers-field-tip">
+		<span class="fieldhelpers-field-tip-toggle dashicons dashicons-editor-help" data-toggle-tip></span>
+		<p class="fieldhelpers-field-tip-text">
+			<?php echo $description; ?>
+		</p>
+	</div>
+	<?php
+
+	return ob_get_clean();
+}
