@@ -50,6 +50,29 @@ function nbs_mb_home_settings() {
 		'numberposts' => - 1,
 	) );
 
+	$hero_page_options = array();
+
+	foreach ( $pages as $page ) {
+
+		$hero_page_options[] = array(
+			'value' => $page->ID,
+			'text'  => $page->post_title,
+		);
+	}
+
+	$product_categories = get_terms( array(
+		'taxonomy'   => 'product_cat',
+		'hide_empty' => false,
+	) );
+
+	foreach ( $product_categories as $category ) {
+
+		$hero_page_options[] = array(
+			'value' => $category->term_id,
+			'text'  => "Category: {$category->name}",
+		);
+	}
+
 	nbs_field_helpers()->fields->do_field_text( 'subhead', array(
 		'group'       => 'home',
 		'label'       => 'Hero Page Sub Header Text',
@@ -63,9 +86,11 @@ function nbs_mb_home_settings() {
 	) );
 
 	nbs_field_helpers()->fields->do_field_select( 'hero_page_link', array(
-		'group'   => 'home',
-		'label'   => 'Hero Page Link',
-		'options' => wp_list_pluck( $pages, 'post_title', 'ID' ),
+		'group'       => 'home',
+		'label'       => 'Hero Page Link',
+		'input_class' => 'regular-text',
+		'options'     => $hero_page_options,
+		'placeholder' => '- Select a Link -',
 	) );
 
 	nbs_field_helpers()->fields->save->initialize_fields( 'home' );
