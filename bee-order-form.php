@@ -3,18 +3,31 @@
  * Shows the Bee order form.
  */
 
-get_header(); ?>
+get_header();
+
+$featured  = get_term_meta( get_queried_object_id(), 'thumbnail_id', true );
+$image_src = false;
+
+if ( $featured ) {
+
+	$image_src = wp_get_attachment_image_src( $featured, 'full' );
+}
+?>
 
 <?php get_template_part( 'template-parts/featured-image' ); ?>
 
-    <div class="main-wrap full-width">
+    <div class="main-wrap full-width nbs-bee-order-form">
         <main class="main-content">
 
-            <div class="woocommerce-archive-header">
+            <div class="woocommerce-archive-header"
+				<?php echo $image_src ? "style=\"background-image: url({$image_src[0]})\"" : ''; ?>
+            >
                 <div class="woocommerce-archive-header-container">
                     <h1 class="page-title">
                         Bee Order Form
                     </h1>
+
+                    <?php woocommerce_taxonomy_archive_description(); ?>
                 </div>
             </div>
 
@@ -59,7 +72,7 @@ get_header(); ?>
 										<?php
 										if ( $pricing_data ) {
 
-											echo wc_price( $pricing_data[$quantity] );
+											echo wc_price( $pricing_data[ $quantity ] );
 
 										} else {
 

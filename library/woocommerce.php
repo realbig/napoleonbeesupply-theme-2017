@@ -27,9 +27,19 @@ add_filter( 'woocommerce_price_format', 'nbs_wc_price_format' );
 function nbs_wc_template_archive_header() {
 
 	add_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );
+
+	$featured = get_term_meta( get_queried_object_id(), 'thumbnail_id', true );
+	$image_src = false;
+
+	if ( $featured ) {
+
+	    $image_src = wp_get_attachment_image_src( $featured, 'full' );
+	}
 	?>
 
-    <div class="woocommerce-archive-header">
+    <div class="woocommerce-archive-header"
+    <?php echo $image_src ? "style=\"background-image: url({$image_src[0]})\"" : ''; ?>
+    >
     <div class="woocommerce-archive-header-container">
 
     <h1 class="page-title"><?php woocommerce_page_title(); ?></h1>

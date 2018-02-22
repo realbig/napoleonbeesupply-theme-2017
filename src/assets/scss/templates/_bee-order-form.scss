@@ -1,11 +1,27 @@
-#nbs-bee-order-form {
-  text-align: left;
+.nbs-bee-order-form {
 
-  th {
-    text-align: left;
+  .woocommerce-archive-header {
+    position: relative;
+    height: 300px;
+    height: 30vh;
+    padding: 0;
+
+    .woocommerce-archive-header-container {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   }
 
-  input[type="number"] {
-    max-width: 5em;
+  #nbs-bee-order-form {
+    text-align: left;
+
+    th {
+      text-align: left;
+    }
+
+    input[type="number"] {
+      max-width: 5em;
+    }
   }
 }
