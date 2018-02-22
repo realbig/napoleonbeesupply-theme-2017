@@ -3,6 +3,26 @@
 Template Name: Front
 */
 get_header();
+
+$hero_page_link = nbs_field_helpers()->fields->get_meta_field( 'hero_page_link' );
+
+if ( $hero_page_link ) {
+
+	$hero_page_link_parts = explode( ':::', $hero_page_link );
+
+	switch ( $hero_page_link_parts[0] ) {
+
+		case 'product_cat':
+
+			$hero_page_link = get_term_link( (int) $hero_page_link_parts[1], 'product_cat' );
+			break;
+
+		case 'page':
+
+			$hero_page_link = get_permalink( $hero_page_link_parts[1] );
+			break;
+	}
+}
 ?>
 
     <header class="front-hero" role="banner"
@@ -12,10 +32,9 @@ get_header();
                 <h1 class="header"><?php the_title(); ?></h1>
                 <h4 class="subheader"><?php echo nbs_field_helpers()->fields->get_meta_field( 'subhead' ); ?></h4>
 
-				<?php $hero_page_link_ID = nbs_field_helpers()->fields->get_meta_field( 'hero_page_link' ); ?>
-				<?php if ( $hero_page_link_ID ) : ?>
+				<?php if ( $hero_page_link ) : ?>
                     <a role="button" class="large button hide-for-small-only"
-                       href="<?php echo get_permalink( $hero_page_link_ID ); ?>">
+                       href="<?php echo esc_url_raw( $hero_page_link ); ?>">
 						<?php echo nbs_field_helpers()->fields->get_meta_field( 'hero_page_link_text' ); ?>
                     </a>
 				<?php endif; ?>
@@ -27,7 +46,12 @@ get_header();
         <span class="honeycomb-overlay honeycomb-overlay-1 overlay-c"></span>
     </header>
 
-<?php $categories = get_terms( array( 'taxonomy' => 'product_cat', 'hide_empty' => false, 'parent' => 0, 'exclude' => array( 107 )) ); ?>
+<?php $categories = get_terms( array(
+	'taxonomy'   => 'product_cat',
+	'hide_empty' => false,
+	'parent'     => 0,
+	'exclude'    => array( 107 )
+) ); ?>
 <?php if ( $categories ) : ?>
     <section class="product-categories">
         <div class="hexagon-grid">
@@ -130,7 +154,7 @@ $subfeatured_products = get_posts( array(
                     </div>
 
                     <h1 class="featured-product-title">
-                        <?php echo $product->get_title(); ?>
+						<?php echo $product->get_title(); ?>
                     </h1>
 
                     <p class="featured-product-price">

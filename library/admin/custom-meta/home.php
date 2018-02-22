@@ -55,7 +55,7 @@ function nbs_mb_home_settings() {
 	foreach ( $pages as $page ) {
 
 		$hero_page_options[] = array(
-			'value' => $page->ID,
+			'value' => "page:::{$page->ID}",
 			'text'  => $page->post_title,
 		);
 	}
@@ -68,7 +68,7 @@ function nbs_mb_home_settings() {
 	foreach ( $product_categories as $category ) {
 
 		$hero_page_options[] = array(
-			'value' => $category->term_id,
+			'value' => "product_cat:::{$category->term_id}",
 			'text'  => "Category: {$category->name}",
 		);
 	}
