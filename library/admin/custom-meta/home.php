@@ -23,7 +23,8 @@ function nbs_add_mb_home() {
 
 	if ( get_the_ID() !== (int) get_option( 'page_on_front' ) ) {
 		return;
-	}
+	}	wp_enqueue_editor();
+
 
 	remove_post_type_support( 'page', 'editor' );
 
@@ -92,6 +93,10 @@ function nbs_mb_home_settings() {
 		'options'     => $hero_page_options,
 		'placeholder' => '- Select a Link -',
 	) );
+
+	nbs_field_helpers()->fields->do_field_textarea( 'test', array(
+		'wysiwyg' => '1',
+	));
 
 	nbs_field_helpers()->fields->save->initialize_fields( 'home' );
 }

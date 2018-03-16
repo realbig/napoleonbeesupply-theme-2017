@@ -38,4 +38,26 @@ $product-thumbnail-sizes: (
       }
     }
   }
+
+  // Variations
+  .variations {
+    vertical-align: middle;
+
+    td, th {
+      vertical-align: middle;
+    }
+
+    tbody {
+      background-color: transparent;
+      border: none;
+    }
+
+    .label, label {
+      background: none;
+      color: inherit;
+      display: inline;
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
 }

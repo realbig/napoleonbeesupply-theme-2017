@@ -7,18 +7,30 @@
 
 defined( 'ABSPATH' ) || die();
 
-add_action( 'woocommerce_csv_product_imported', 'nbs_product_import', 10, 3 );
-
+add_action( 'woocommerce_csv_product_imported', 'nbs_product_import_2', 10, 3 );
 /**
  * Additional import processes.
  *
- * @since {{VERSION}}
+ * @version 2
  *
  * @param $post
  * @param $processing_product_id
  * @param $importer
  */
-function nbs_product_import( $post, $processing_product_id, $importer ) {
+function nbs_product_import_2( $post, $processing_product_id, $importer ) {
+
+}
+
+/**
+ * Additional import processes.
+ *
+ * @version 1
+ *
+ * @param $post
+ * @param $processing_product_id
+ * @param $importer
+ */
+function nbs_product_import_1( $post, $processing_product_id, $importer ) {
 
 	$featured_image_path = get_template_directory() . "/library/product-import/images/{$post['sku']}.jpg";
 
