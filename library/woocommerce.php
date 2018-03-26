@@ -17,6 +17,7 @@ add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_close_div', 100 );
 add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_close_div', 101 );
 
 add_filter( 'woocommerce_price_format', 'nbs_wc_price_format' );
+add_filter( 'pre_get_posts', 'nbs_bee_order_form_order' );
 
 /**
  * WooCommerce template before shop loop.
@@ -79,4 +80,23 @@ function nbs_wc_template_close_div() {
 function nbs_wc_price_format( $format ) {
 
 	return '%1$s<span class="price-amount">%2$s</span>';
+}
+
+/**
+ * Modifies the order of items on the bee order form.
+ *
+ * @since {{VERSION}}
+ * @access private
+ *
+ * @param WP_Query $wp_query
+ */
+function nbs_bee_order_form_order( $wp_query ) {
+
+	if ( ! get_term_meta( get_queried_object()->term_id, 'nbs_bees_category', true ) === '1' ) {
+
+		return;
+	}
+
+	$wp_query->set( 'orderby', 'meta_value_num' );
+	$wp_query->set( 'meta_key', 'form_order' );
 }
