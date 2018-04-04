@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 41);
+/******/ 	return __webpack_require__(__webpack_require__.s = 42);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -4619,6 +4619,8 @@ var _whatInput = __webpack_require__(38);
 var _whatInput2 = _interopRequireDefault(_whatInput);
 
 __webpack_require__(39);
+
+__webpack_require__(41);
 
 var _foundationSites = __webpack_require__(20);
 
@@ -12485,6 +12487,58 @@ _jquery2.default.ajax({
 
 /***/ }),
 /* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var NBS_SiteSearch = function () {
+    function NBS_SiteSearch() {
+        _classCallCheck(this, NBS_SiteSearch);
+
+        this.$searchForm = $('#site-search');
+
+        if (!this.$searchForm.length) {
+
+            return;
+        }
+
+        this.searchToggleInit();
+    }
+
+    _createClass(NBS_SiteSearch, [{
+        key: 'searchToggleInit',
+        value: function searchToggleInit() {
+
+            var $toggle = $('[data-search-toggle]');
+            var that = this;
+
+            $toggle.click(function (e) {
+
+                e.preventDefault();
+
+                that.onToggle($(this));
+            });
+        }
+    }, {
+        key: 'onToggle',
+        value: function onToggle($toggle) {
+
+            this.$searchForm.toggleClass('show');
+        }
+    }]);
+
+    return NBS_SiteSearch;
+}();
+
+new NBS_SiteSearch();
+
+/***/ }),
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(19);

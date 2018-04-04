@@ -12,7 +12,7 @@
   }
 }
 
-article.post.has-post-thumbnail {
+body:not(.search) article.post.has-post-thumbnail {
   position: relative;
   top: -10rem;
 

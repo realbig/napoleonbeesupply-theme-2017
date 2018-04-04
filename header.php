@@ -57,6 +57,10 @@
             </div>
         </nav>
 
+        <section id="site-search" class="search <?php echo is_search() ? 'show' : ''; ?>">
+		    <?php get_search_form(); ?>
+        </section>
+
     </header>
 
     <div class="container">

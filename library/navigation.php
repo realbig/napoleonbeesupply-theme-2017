@@ -26,10 +26,12 @@ if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
 
 		$catalog_toggle = "<li id=\"menu-item-catalog\" class=\"menu-item menu-item-catalog\"><a href=\"#\" data-toggle=\"off-canvas-menu\">Shop {$cart_icon}</a></li>";
 
+		$search = "<li id=\"menu-item-search\" class=\"menu-item menu-item-search\"><a href=\"#\" data-search-toggle><span class=\"fa fa-search\"</a></li>";
+
 		wp_nav_menu( array(
 			'container'      => false,
 			'menu_class'     => 'dropdown menu',
-			'items_wrap'     => "<ul id=\"%1\$s\" class=\"%2\$s desktop-menu\" data-dropdown-menu>%3\$s{$catalog_toggle}</ul>",
+			'items_wrap'     => "<ul id=\"%1\$s\" class=\"%2\$s desktop-menu\" data-dropdown-menu>{$search}%3\$s{$catalog_toggle}</ul>",
 			'theme_location' => 'top-bar-r',
 			'depth'          => 3,
 			'fallback_cb'    => false,

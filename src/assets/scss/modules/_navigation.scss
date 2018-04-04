@@ -182,6 +182,24 @@
       }
     }
 
+    li.menu-item-search {
+      a {
+        &:after {
+          display: none;
+        }
+
+        &:hover {
+          .fa {
+            transform: scale(1.5);
+          }
+        }
+      }
+
+      .fa {
+        transition: transform 300ms;
+      }
+    }
+
     a {
       position: relative;
       color: $white;
@@ -227,8 +245,13 @@
     > li {
       &:not(.menu-text) {
         > a {
-          padding-left: 2rem;
-          padding-right: 2rem;
+          padding-left: 1rem;
+          padding-right: 1rem;
+
+          @include breakpoint(xlarge) {
+            padding-left: 2rem;
+            padding-right: 2rem;
+          }
         }
       }
     }
