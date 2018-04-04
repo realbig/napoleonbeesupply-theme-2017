@@ -17,4 +17,14 @@ body.post-type-archive-product {
       }
     }
   }
+
+  .woocommerce-subcategories-nav {
+    a {
+      color: inherit;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
 }

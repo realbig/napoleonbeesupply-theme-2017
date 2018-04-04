@@ -18,6 +18,7 @@ add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_close_div', 101 );
 
 add_filter( 'woocommerce_price_format', 'nbs_wc_price_format' );
 add_filter( 'pre_get_posts', 'nbs_bee_order_form_order' );
+//add_filter( 'woocommerce_email_order_items_table', 'nbs_add_wc_order_email_sku');
 
 /**
  * WooCommerce template before shop loop.
@@ -45,9 +46,26 @@ function nbs_wc_template_archive_header() {
 
     <h1 class="page-title"><?php woocommerce_page_title(); ?></h1>
 
+
     <?php do_action( 'woocommerce_archive_description' ); ?>
 
-	<?php
+    <?php
+    $sub_categories = get_terms( array(
+        'taxonomy' => 'product_cat',
+        'parent' => get_queried_object_id(),
+    ));
+
+    if ( $sub_categories ) : ?>
+        <ul class="woocommerce-subcategories-nav">
+            <?php foreach ( $sub_categories as $category ) : ?>
+                <li>
+                    <a href="<?php echo get_term_link( $category ); ?>">
+                        <?php echo $category->name; ?>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+	<?php endif;
 }
 
 /**
@@ -92,11 +110,28 @@ function nbs_wc_price_format( $format ) {
  */
 function nbs_bee_order_form_order( $wp_query ) {
 
-	if ( ! get_term_meta( get_queried_object()->term_id, 'nbs_bees_category', true ) === '1' ) {
+	if ( is_admin() || ! $wp_query->is_main_query() || get_term_meta( get_queried_object()->term_id, 'nbs_bees_category', true ) !== '1' ) {
 
 		return;
 	}
 
 	$wp_query->set( 'orderby', 'meta_value_num' );
 	$wp_query->set( 'meta_key', 'form_order' );
+}
+
+function nbs_add_wc_order_email_sku( $table, $order ) {
+
+	ob_start();
+
+	$template = 'emails/email-order-items.php';
+	wc_get_template( $template, array(
+		'order'                 => $order,
+        'items'                 => $order->get_items(),
+		'show_download_links'   => true,
+		'show_sku'              => true,
+		'show_purchase_note'    => true,
+		'show_image'            => false,
+	) );
+
+	return ob_get_clean();
 }
