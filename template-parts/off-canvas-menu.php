@@ -15,6 +15,10 @@
         Close
     </button>
 
+    <div class="site-search mobile">
+		<?php get_search_form(); ?>
+    </div>
+
     <h2 class="off-canvas-section-title">Navigation</h2>
 
 	<?php foundationpress_mobile_nav(); ?>

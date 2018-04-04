@@ -7,11 +7,11 @@
  */
 ?>
 
-<form role="search" method="get" id="searchform" class="search-form" action="<?php echo home_url( '/' ); ?>">
+<form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
     <input type="text" class="search-input" value="<?php echo get_search_query(); ?>" name="s" id="s"
            placeholder="<?php esc_attr_e( 'Search', 'foundationpress' ); ?>">
 
-    <button type="submit" id="searchsubmit" class="search-submit" aria-label="Search" title="Search">
+    <button type="submit" class="search-submit" aria-label="Search" title="Search">
         <span class="fa fa-search"></span>
     </button>
 </form>

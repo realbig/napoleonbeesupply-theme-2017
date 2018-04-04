@@ -169,6 +169,14 @@
 .top-bar {
   font-family: $header-font-family;
 
+  @include breakpoint(small only) {
+    display: none;
+  }
+
+  @include breakpoint(medium only) {
+    display: none;
+  }
+
   @include breakpoint(large) {
     height: 90px;
   }
@@ -223,7 +231,7 @@
     color: inherit;
   }
 
-  .search {
+  .site-search {
     display: inline-block;
   }
 

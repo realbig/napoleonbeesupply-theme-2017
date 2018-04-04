@@ -35,7 +35,7 @@ if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
         <div class="nav-container">
             <div class="top-nav">
 
-                <div id="site-search" class="search">
+                <div class="site-search">
                     <?php get_search_form(); ?>
                 </div>
 

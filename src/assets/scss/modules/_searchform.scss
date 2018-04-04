@@ -1,4 +1,4 @@
-#site-search {
+.site-search {
   .search-form {
     position: relative;
     width: 18em;
@@ -42,5 +42,18 @@
     cursor: pointer;
     color: $white;
     transform: translateY(-50%);
+  }
+
+  &.mobile {
+    .search-form {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .search-input {
+      height: 2.5em;
+      font-size: 1.3rem;
+      border-color: $white !important;
+    }
   }
 }
