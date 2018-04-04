@@ -45,6 +45,12 @@
   }
 
   &.mobile {
+    display: block;
+
+    @include breakpoint(large) {
+      display: none;
+    }
+
     .search-form {
       width: 80%;
       margin: 0 auto;
