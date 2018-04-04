@@ -23,8 +23,9 @@
 	        <?php endif; ?>
 
             <p class="footer-social">
-                <span class="footer-social-icon fa fa-facebook-square"></span>
-                <span class="footer-social-icon fa fa-twitter-square"></span>
+                <a href="https://www.facebook.com/napoleonbeesupply/">
+                    <span class="footer-social-icon fa fa-facebook-square"></span>
+                </a>
             </p>
 
             <p class="footer-meta">
