@@ -22,21 +22,51 @@ if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
 	function foundationpress_top_bar_r() {
 
 		$cart_count = WC()->cart->get_cart_contents_count();
-		$cart_icon  = $cart_count > 0 ? "&nbsp;<span class=\"fa fa-shopping-cart\"></span>&nbsp;({$cart_count})" : '';
-
-		$catalog_toggle = "<li id=\"menu-item-catalog\" class=\"menu-item menu-item-catalog\"><a href=\"#\" data-toggle=\"off-canvas-menu\">Shop {$cart_icon}</a></li>";
 
 		$search = "<li id=\"menu-item-search\" class=\"menu-item menu-item-search\"><a href=\"#\" data-search-toggle><span class=\"fa fa-search\"</a></li>";
+		?>
 
-		wp_nav_menu( array(
-			'container'      => false,
-			'menu_class'     => 'dropdown menu',
-			'items_wrap'     => "<ul id=\"%1\$s\" class=\"%2\$s desktop-menu\" data-dropdown-menu>{$search}%3\$s{$catalog_toggle}</ul>",
-			'theme_location' => 'top-bar-r',
-			'depth'          => 3,
-			'fallback_cb'    => false,
-			'walker'         => new Foundationpress_Top_Bar_Walker(),
-		) );
+        <div class="nav-catalog">
+            <a href="#" data-toggle="off-canvas-menu">
+                Shop
+            </a>
+        </div>
+
+        <div class="nav-container">
+            <div class="top-nav">
+
+                <div id="site-search" class="search">
+                    <?php get_search_form(); ?>
+                </div>
+
+                <a href="https://www.facebook.com/napoleonbeesupply/" aria-label="Facebook" target="_blank" title="Facebook" class="nav-icon facebook-link">
+                    <span class="footer-social-icon fa fa-facebook"></span>
+                </a>
+
+                <a href="<?php echo wp_login_url(); ?>" class="wp-login nav-icon" aria-label="Log In" title="Log In">
+                    <span class="fa fa-user"></span>
+                </a>
+
+                <a href="<?php echo wc_get_cart_url(); ?>" class="woocommerce-cart nav-icon" aria-label="Shopping Cart"
+                   title="Shopping Cart">
+                    <span class="fa fa-shopping-cart"></span>
+                    &nbsp;&nbsp;$<?php echo WC()->cart->cart_contents_total; ?>
+                </a>
+            </div>
+
+            <div class="bottom-nav">
+				<?php wp_nav_menu( array(
+					'container'      => false,
+					'menu_class'     => 'dropdown menu',
+					'items_wrap'     => "<ul id=\"%1\$s\" class=\"%2\$s desktop-menu\" data-dropdown-menu>%3\$s</ul>",
+					'theme_location' => 'top-bar-r',
+					'depth'          => 3,
+					'fallback_cb'    => false,
+					'walker'         => new Foundationpress_Top_Bar_Walker(),
+				) ); ?>
+            </div>
+        </div>
+		<?php
 	}
 }
 

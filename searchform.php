@@ -5,13 +5,13 @@
  * @package FoundationPress
  * @since FoundationPress 1.0.0
  */
- ?>
+?>
 
-<form role="search" method="get" id="searchform" action="<?php echo home_url( '/' ); ?>">
-	<div class="input-group">
-		<input type="text" class="input-group-field" value="<?php echo get_search_query(); ?>" name="s" id="s" placeholder="<?php esc_attr_e( 'Search', 'foundationpress' ); ?>">
-		<div class="input-group-button">
-			<input type="submit" id="searchsubmit" value="<?php esc_attr_e( 'Search', 'foundationpress' ); ?>" class="button">
-		</div>
-	</div>
+<form role="search" method="get" id="searchform" class="search-form" action="<?php echo home_url( '/' ); ?>">
+    <input type="text" class="search-input" value="<?php echo get_search_query(); ?>" name="s" id="s"
+           placeholder="<?php esc_attr_e( 'Search', 'foundationpress' ); ?>">
+
+    <button type="submit" id="searchsubmit" class="search-submit" aria-label="Search" title="Search">
+        <span class="fa fa-search"></span>
+    </button>
 </form>

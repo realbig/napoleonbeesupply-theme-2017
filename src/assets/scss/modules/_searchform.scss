@@ -1,15 +1,46 @@
 #site-search {
-  display: none;
-
-  &.show {
-    display: block;
+  .search-form {
+    position: relative;
+    width: 18em;
   }
 
-  .input-group {
+  .search-input {
+    background: none;
+    border: 1px solid mix($secondary-color, $black, 85%);
     margin-bottom: 0;
+    margin-right: 0;
+    height: 1.8rem;
+    width: 100%;
+    max-width: none;
+    box-shadow: none;
+    transition: border-color 300ms;
+    color: $white;
+
+    &:hover,
+    &:focus {
+      border: 1px solid mix($secondary-color, $black, 60%);
+    }
+
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: $white;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: $white;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: $white;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: $white;
+    }
   }
 
-  .input-group-button input {
-    height: 100%;
+  .search-submit {
+    position: absolute;
+    right: 0.5em;
+    top: 50%;
+    cursor: pointer;
+    color: $white;
+    transform: translateY(-50%);
   }
 }

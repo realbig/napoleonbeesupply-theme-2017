@@ -15,16 +15,6 @@
         Close
     </button>
 
-    <h2 class="off-canvas-section-title">Cart</h2>
-
-    <div class="woocommerce-cart">
-        <a href="<?php echo wc_get_cart_url(); ?>">
-            <span class="fa fa-shopping-cart"></span>
-            &nbsp;<?php echo WC()->cart->get_cart_contents_count(); ?> items
-            &nbsp;-&nbsp;$<?php echo WC()->cart->cart_contents_total; ?>
-        </a>
-    </div>
-
     <h2 class="off-canvas-section-title">Navigation</h2>
 
 	<?php foundationpress_mobile_nav(); ?>
