@@ -1,2 +1,70 @@
 body.search {
+  article {
+    margin-bottom: 3rem;
+
+    .entry-title {
+      @extend h4;
+    }
+
+    &.post {
+      .featured-hero {
+        position: relative;
+        height: rem-calc(200);
+        margin-bottom: 1rem;
+
+        @include breakpoint(medium) {
+          height: rem-calc(250);
+        }
+
+        @include breakpoint(large) {
+          height: rem-calc(300);
+        }
+
+        .featured-hero-content {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          padding: 1rem;
+          color: $white;
+          z-index: 20;
+
+          .entry-title,
+          a {
+            color: inherit;
+          }
+        }
+      }
+    }
+
+    &.product {
+      @include xy-grid;
+
+      &.has-post-thumbnail {
+        .content {
+          @include breakpoint(medium) {
+            @include xy-cell(8);
+          }
+
+          @include breakpoint(large) {
+            @include xy-cell(9);
+          }
+        }
+
+        .image {
+          @include breakpoint(medium) {
+            @include xy-cell(4);
+          }
+
+          @include breakpoint(large) {
+            @include xy-cell(3);
+          }
+        }
+      }
+
+      .woocommerce-Price-amount {
+        color: #77a464;
+      }
+    }
+  }
 }
