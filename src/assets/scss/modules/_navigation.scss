@@ -39,7 +39,7 @@
     }
   }
 
-  > ul.menu {
+  > .off-canvas-container > ul.menu {
     @include hide-for(large);
     @include hexagon-grid(
             $item-container-class: 'menu-item'
