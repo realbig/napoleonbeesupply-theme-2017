@@ -2,7 +2,7 @@
 /**
  * Handles WooCommerce support/modifications.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  */
 
 defined( 'ABSPATH' ) || die();
@@ -27,7 +27,7 @@ add_filter( 'woocommerce_cart_item_class', 'nbs_wc_cart_item_class', 10, 2 );
 /**
  * WooCommerce template before shop loop.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  * @access private
  */
 function nbs_wc_template_archive_header() {
@@ -75,7 +75,7 @@ function nbs_wc_template_archive_header() {
 /**
  * WooCommerce template before shop loop.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  * @access private
  */
 function nbs_wc_template_archive_header_results() {
@@ -88,7 +88,7 @@ function nbs_wc_template_archive_header_results() {
 /**
  * WooCommerce template div closer.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  * @access private
  */
 function nbs_wc_template_close_div() {
@@ -107,7 +107,7 @@ function nbs_wc_price_format( $format ) {
 /**
  * Modifies the order of items on the bee order form.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  * @access private
  *
  * @param WP_Query $wp_query
@@ -143,7 +143,7 @@ function nbs_add_wc_order_email_sku( $table, $order ) {
 /**
 * Alert for in-store-pickup items on checkout.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  * @access private
  */
 function nbs_wc_add_checkout_cart_notice() {
@@ -167,7 +167,7 @@ function nbs_wc_add_checkout_cart_notice() {
 /**
 * Alert for in-store-pickup items on single product.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  * @access private
  */
 function nbs_wc_single_product_notices() {
@@ -185,7 +185,7 @@ function nbs_wc_single_product_notices() {
 /**
  * Modifies the cart item class.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  * @access private
  *
  * @param string $class

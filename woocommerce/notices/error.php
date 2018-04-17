@@ -2,7 +2,7 @@
 /**
  * Show error messages
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  */
 
 defined( 'ABSPATH' ) || die();

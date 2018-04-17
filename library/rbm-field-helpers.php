@@ -8,7 +8,7 @@ defined( 'ABSPATH' ) || die();
 /**
  * Gets the Napleon Bee Supply RBM Field Helpers instance.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  */
 function nbs_field_helpers() {
 
@@ -33,7 +33,7 @@ nbs_field_helpers();
 /**
  * Gets a field description tip.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  *
  * @param string $description Description text.
  */

@@ -2,7 +2,7 @@
 /**
  * Displayed when no products are found matching the current query
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  */
 
 defined( 'ABSPATH' ) || die();

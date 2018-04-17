@@ -2,7 +2,7 @@
 /**
  * The template for displaying product content in the single-product.php template.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  */
 
 defined( 'ABSPATH' ) || die();

@@ -2,7 +2,7 @@
 /**
  * Contact Template extra meta.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  */
 
 // Don't load directly

@@ -2,7 +2,7 @@
 /**
  * Product import alterations (From WooCommerce Product Import Suite)
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  */
 
 defined( 'ABSPATH' ) || die();
@@ -72,7 +72,7 @@ function nbs_product_import_1( $post, $processing_product_id, $importer ) {
 /**
  * Imports a file.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  *
  * @param $filepath
  *

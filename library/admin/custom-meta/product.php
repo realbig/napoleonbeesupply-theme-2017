@@ -82,7 +82,7 @@ function nbs_mb_product_featured_image() {
 /**
  * Adds columns to the Posts List Table for Products.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  * @access private
  *
  * @param $columns
@@ -111,7 +111,7 @@ function nbs_add_columns_product( $columns ) {
 /**
  * Adds column data to the Posts List Table for Products.
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  * @access private
  *
  * @param $column_name

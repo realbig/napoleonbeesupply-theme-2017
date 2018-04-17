@@ -2,7 +2,7 @@
 /**
  * Show messages
  *
- * @since {{VERSION}}
+ * @since 1.0.2
  *
  * @var array $messages
  */
