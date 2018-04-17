@@ -94,9 +94,5 @@ function nbs_mb_home_settings() {
 		'placeholder' => '- Select a Link -',
 	) );
 
-	nbs_field_helpers()->fields->do_field_textarea( 'test', array(
-		'wysiwyg' => '1',
-	));
-
 	nbs_field_helpers()->fields->save->initialize_fields( 'home' );
 }

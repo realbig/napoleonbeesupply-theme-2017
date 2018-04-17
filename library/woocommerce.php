@@ -10,6 +10,7 @@ defined( 'ABSPATH' ) || die();
 add_filter( 'woocommerce_show_page_title', '__return_false' );
 remove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description' );
 
+add_action( 'woocommerce_before_single_product', 'nbs_wc_single_product_notices' );
 add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_archive_header', 1 );
 add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_archive_header_results', 15 );
 add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_close_div', 99 );
@@ -18,6 +19,9 @@ add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_close_div', 101 );
 
 add_filter( 'woocommerce_price_format', 'nbs_wc_price_format' );
 add_filter( 'pre_get_posts', 'nbs_bee_order_form_order' );
+add_action( 'woocommerce_before_cart', 'nbs_wc_add_checkout_cart_notice', 11 );
+add_action( 'woocommerce_before_checkout_form', 'nbs_wc_add_checkout_cart_notice', 11 );
+add_filter( 'woocommerce_cart_item_class', 'nbs_wc_cart_item_class', 10, 2 );
 //add_filter( 'woocommerce_email_order_items_table', 'nbs_add_wc_order_email_sku');
 
 /**
@@ -134,4 +138,67 @@ function nbs_add_wc_order_email_sku( $table, $order ) {
 	) );
 
 	return ob_get_clean();
+}
+
+/**
+* Alert for in-store-pickup items on checkout.
+ *
+ * @since {{VERSION}}
+ * @access private
+ */
+function nbs_wc_add_checkout_cart_notice() {
+
+    /** @var WooCommerce $woocommerce */
+    global $woocommerce;
+
+    $items = $woocommerce->cart->get_cart();
+
+    foreach ( $items as $item ) {
+
+        if ( $item['data']->is_virtual() ) {
+
+            wc_print_notice( 'Please Note: One or more of your items is an in store pickup ONLY item. If you purchase this, you will not be charged shipping for this product, but must come in the store to pick it up.', 'notice' );
+
+            break;
+        }
+    }
+}
+
+/**
+* Alert for in-store-pickup items on single product.
+ *
+ * @since {{VERSION}}
+ * @access private
+ */
+function nbs_wc_single_product_notices() {
+
+    /** @var WC_Product $product */
+    global $product;
+
+    if ( $product->is_virtual() ) {
+
+        wc_print_notice( 'Please Note: This is an in store pickup ONLY item. If you purchase this, you will not be charged shipping for this product, but must come in the store to pick it up.', 'notice' );
+    }
+
+}
+
+/**
+ * Modifies the cart item class.
+ *
+ * @since {{VERSION}}
+ * @access private
+ *
+ * @param string $class
+ * @param array $cart_item
+ *
+ * @return string
+ */
+function nbs_wc_cart_item_class( $class, $cart_item ) {
+
+    if ( $cart_item['data']->is_virtual() ) {
+
+        $class .= ' is-virtual';
+    }
+
+    return $class;
 }

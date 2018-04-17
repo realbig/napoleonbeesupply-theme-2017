@@ -50,12 +50,22 @@
         </div>
 
         <div class="contact-container-right">
-			<?php
+            <h2>Location</h2>
+	        <?php
 			$address = nbs_field_helpers()->fields->get_field( 'address' );
 
 			if ( $address ) {
 
 				echo do_shortcode( wpautop( $address ) );
+			}
+			?>
+            <h2>Hours</h2>
+			<?php
+			$hours = nbs_field_helpers()->fields->get_field( 'hours' );
+
+			if ( $hours ) {
+
+				echo do_shortcode( wpautop( $hours ) );
 			}
 			?>
         </div>

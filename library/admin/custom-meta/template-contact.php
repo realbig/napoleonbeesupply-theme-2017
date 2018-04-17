@@ -47,6 +47,14 @@ function nbs_mb_contact() {
 	nbs_field_helpers()->fields->do_field_textarea( 'address', array(
 		'group'   => 'contact',
 		'label'   => 'Address',
+		'rows'    => 15,
+		'wysiwyg' => true,
+	) );
+
+	nbs_field_helpers()->fields->do_field_textarea( 'hours', array(
+		'group'   => 'contact',
+		'label'   => 'Hours',
+		'rows'    => 15,
 		'wysiwyg' => true,
 	) );
 
