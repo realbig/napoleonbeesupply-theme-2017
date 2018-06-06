@@ -3,7 +3,7 @@
  * Google Tag Manager (B) code. This will be inserted into the header of the site. Please modify code in between the
  * denoted area.
  *
- * @since {{VERSION}}
+ * @since 1.0.3
  */
 
 defined( 'ABSPATH' ) || die();

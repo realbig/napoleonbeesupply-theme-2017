@@ -2,7 +2,7 @@
 /**
  * Third party scripts and tools.
  *
- * @since {{VERSION}}
+ * @since 1.0.3
  */
 
 defined( 'ABSPATH' ) || die();
@@ -14,7 +14,7 @@ add_action( 'nbs_body_open', 'nbs_google_tag_manager_b_code', 1 );
 /**
  * Outputs the Google Tag Manager (A) code.
  *
- * @since {{VERSION}}
+ * @since 1.0.3
  * @access private
  */
 function nbs_google_tag_manager_a_code() {
@@ -24,7 +24,7 @@ function nbs_google_tag_manager_a_code() {
 /**
  * Outputs the Google Tag Manager (B) code.
  *
- * @since {{VERSION}}
+ * @since 1.0.3
  * @access private
  */
 function nbs_google_tag_manager_b_code() {

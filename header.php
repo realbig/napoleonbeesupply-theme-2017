@@ -22,7 +22,7 @@
 /**
  * Fires immediately after opening <body> tag.
  *
- * @since {{VERSION}}
+ * @since 1.0.3
  */
 do_action( 'nbs_body_open' );
 ?>
