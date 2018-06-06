@@ -18,6 +18,15 @@
 </head>
 <body <?php body_class(); ?>>
 
+<?php
+/**
+ * Fires immediately after opening <body> tag.
+ *
+ * @since {{VERSION}}
+ */
+do_action( 'nbs_body_open' );
+?>
+
 <?php get_template_part( 'template-parts/off-canvas-menu' ); ?>
 
 <div class="off-canvas-content" data-off-canvas-content>

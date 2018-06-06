@@ -65,5 +65,7 @@ require_once( 'library/admin/admin.php' );
 /** Product Import extras */
 require_once( 'library/product-import/product-import.php' );
 
+require_once( 'library/third-party.php' );
+
 /** If your site requires protocol relative url's for theme assets, uncomment the line below */
 // require_once( 'library/class-foundationpress-protocol-relative-theme-assets.php' );
