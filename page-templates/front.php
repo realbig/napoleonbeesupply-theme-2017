@@ -27,6 +27,7 @@ if ( $hero_page_link ) {
 
     <header class="front-hero" role="banner"
 		<?php echo nbs_get_featured_interchange( get_post_thumbnail_id( $post->ID ) ); ?>>
+		<div class="color-overlay"></div>
         <div class="marketing">
             <div class="tagline">
                 <h1 class="header"><?php the_title(); ?></h1>

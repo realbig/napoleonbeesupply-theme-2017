@@ -1,9 +1,20 @@
 body.page-template-front {
   // Page header
   .off-canvas-content .front-hero {
+	  
+	  .color-overlay {
+		  position: absolute;
+		  top: 0;
+		  right: 0;
+		  left: 0;
+		  bottom: 0;
+		  @include background-opacity( #000000, 0.3 );
+	  }
+	  
     .marketing {
       @include xy-grid-container(55rem);
       @include xy-grid;
+		position: relative;
     }
 
     @include breakpoint(small) {

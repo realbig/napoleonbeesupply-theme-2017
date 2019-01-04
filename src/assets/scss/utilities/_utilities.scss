@@ -6,3 +6,8 @@
     }
   }
 }
+
+@mixin background-opacity( $color, $opacity: 0.3 ) {
+  background: $color; /* The fallback for ancient things */
+  background: rgba( $color, $opacity );
+}
