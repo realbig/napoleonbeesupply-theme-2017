@@ -34,7 +34,7 @@ if ( $hero_page_link ) {
                 <h4 class="subheader"><?php echo nbs_field_helpers()->fields->get_meta_field( 'subhead' ); ?></h4>
 
 				<?php if ( $hero_page_link ) : ?>
-                    <a role="button" class="large button hide-for-small-only"
+                    <a role="button" class="large button"
                        href="<?php echo esc_url_raw( $hero_page_link ); ?>">
 						<?php echo nbs_field_helpers()->fields->get_meta_field( 'hero_page_link_text' ); ?>
                     </a>
