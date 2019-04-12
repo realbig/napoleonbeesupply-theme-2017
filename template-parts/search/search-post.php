@@ -31,7 +31,7 @@
 
     <div class="entry-content">
 		<?php the_excerpt(); ?>
-		<?php edit_post_link( __( '(Edit)', 'foundationpress' ), '<span class="edit-link">', '</span>' ); ?>
+		<?php edit_post_link( __( '(Edit)', 'napoleonbeesupply-theme-2017' ), '<span class="edit-link">', '</span>' ); ?>
     </div>
 
     <footer>

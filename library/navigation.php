@@ -8,8 +8,8 @@
  */
 
 register_nav_menus( array(
-	'top-bar-r'  => esc_html__( 'Right Top Bar', 'foundationpress' ),
-	'mobile-nav' => esc_html__( 'Mobile', 'foundationpress' ),
+	'top-bar-r'  => esc_html__( 'Right Top Bar', 'napoleonbeesupply-theme-2017' ),
+	'mobile-nav' => esc_html__( 'Mobile', 'napoleonbeesupply-theme-2017' ),
 ) );
 
 
@@ -78,7 +78,7 @@ if ( ! function_exists( 'foundationpress_mobile_nav' ) ) {
 	function foundationpress_mobile_nav() {
 		wp_nav_menu( array(
 			'container'      => false, // Remove nav container
-			'menu'           => __( 'mobile-nav', 'foundationpress' ),
+			'menu'           => __( 'mobile-nav', 'napoleonbeesupply-theme-2017' ),
 			'menu_class'     => 'vertical menu',
 			'theme_location' => 'mobile-nav',
 			'before'         => '<div class="hexagon hexagon-no-cover"><div class="hexagon-background"></div>',

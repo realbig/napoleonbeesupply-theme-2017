@@ -10,8 +10,8 @@ if ( ! function_exists( 'foundationpress_sidebar_widgets' ) ) :
 function foundationpress_sidebar_widgets() {
 	register_sidebar(array(
 		'id' => 'sidebar-widgets',
-		'name' => __( 'Sidebar widgets', 'foundationpress' ),
-		'description' => __( 'Drag widgets to this sidebar container.', 'foundationpress' ),
+		'name' => __( 'Sidebar widgets', 'napoleonbeesupply-theme-2017' ),
+		'description' => __( 'Drag widgets to this sidebar container.', 'napoleonbeesupply-theme-2017' ),
 		'before_widget' => '<section id="%1$s" class="widget %2$s">',
 		'after_widget' => '</section>',
 		'before_title' => '<h6 class="widget-title">',
@@ -20,8 +20,8 @@ function foundationpress_sidebar_widgets() {
 
 	register_sidebar(array(
 		'id' => 'footer-widgets',
-		'name' => __( 'Footer widgets', 'foundationpress' ),
-		'description' => __( 'Drag widgets to this footer container', 'foundationpress' ),
+		'name' => __( 'Footer widgets', 'napoleonbeesupply-theme-2017' ),
+		'description' => __( 'Drag widgets to this footer container', 'napoleonbeesupply-theme-2017' ),
 		'before_widget' => '<section id="%1$s" class="large-4 columns widget %2$s">',
 		'after_widget' => '</section>',
 		'before_title' => '<h6 class="widget-title">',
