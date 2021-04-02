@@ -1,0 +1,11 @@
+.woocommerce-checkout {
+
+    #ppcp-credit-card-gateway-card-number {
+        min-height: 4rem !important;
+    }
+
+    #ppcp-credit-card-gateway-card-expiry, #ppcp-credit-card-gateway-card-cvc {
+        min-height: 4rem !important;
+    }
+
+}
