@@ -24,6 +24,8 @@ add_action( 'woocommerce_before_checkout_form', 'nbs_wc_add_checkout_cart_notice
 add_filter( 'woocommerce_cart_item_class', 'nbs_wc_cart_item_class', 10, 2 );
 //add_filter( 'woocommerce_email_order_items_table', 'nbs_add_wc_order_email_sku');
 
+add_action( 'woocommerce_credit_card_form_end', 'nbs_woocommerce_credit_card_form_end', 11 );
+
 /**
  * WooCommerce template before shop loop.
  *
@@ -203,4 +205,29 @@ function nbs_wc_cart_item_class( $class, $cart_item ) {
     }
 
     return $class;
+}
+
+/**
+ * Show some helper text for the Credit Card form
+ * This form is slow to process and users could get confused
+ *
+ * @param   string  $id  Payment Gateway ID
+ *
+ * @since   {{VERSION}}
+ * @return  void
+ */
+function nbs_woocommerce_credit_card_form_end( $id ) {
+
+    if ( $id !== 'ppcp-credit-card-gateway' ) return;
+
+    ?>
+
+    <p class="form-row form-row-wide">
+
+        <?php _e( 'Once you click "Submit", Please wait while your order is processed. Do not hit the back button or resubmit your order.', 'napoleonbeesupply-theme-2017' ); ?>
+
+    </p>
+
+    <?php
+
 }
