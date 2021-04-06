@@ -101,6 +101,8 @@ function nbs_wc_template_close_div() {
  */
 function nbs_wc_price_format( $format ) {
 
+    if ( is_admin() ) return $format;
+
 	return '%1$s<span class="price-amount">%2$s</span>';
 }
 
