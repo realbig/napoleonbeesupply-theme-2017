@@ -244,10 +244,12 @@ gulp.task( 'version', function() {
         'admin/**/*',
         'assets/src/**/*',
         'core/**/*',
+        'library/**/*',
         '!core/library/**/*',
         'languages/**/*',
         'page-templates/**/*',
 		'functions.php',
+    '*.php',
         'style.css',
         'readme.txt'
     ], { base: './', allowEmpty: true } )

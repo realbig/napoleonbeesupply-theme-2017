@@ -213,7 +213,7 @@ function nbs_wc_cart_item_class( $class, $cart_item ) {
  *
  * @param   string  $id  Payment Gateway ID
  *
- * @since   {{VERSION}}
+ * @since   1.0.8
  * @return  void
  */
 function nbs_woocommerce_credit_card_form_end( $id ) {

@@ -11,7 +11,7 @@ if ( ! class_exists( 'Foundationpress_Protocol_Relative_Theme_Assets' ) ) :
 		/**
 		 * Plugin URI: https://github.com/ryanjbonnell/Protocol-Relative-Theme-Assets
 		 * Description: Transforms enqueued CSS and JavaScript theme URLs to use protocol-relative paths.
-		 * Version: 1.0
+		 * @version 1.0
 		 * Author: Ryan J. Bonnell
 		 * Author URI: https://github.com/ryanjbonnell
 		 *
