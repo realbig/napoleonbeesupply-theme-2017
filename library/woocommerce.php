@@ -224,7 +224,7 @@ function nbs_woocommerce_credit_card_form_end( $id ) {
 
     <p class="form-row form-row-wide">
 
-        <?php _e( 'Once you click "Submit", please wait while your order is processed. Do not hit the back button or resubmit your order.', 'napoleonbeesupply-theme-2017' ); ?>
+        <?php printf( __( 'Once you click "%s", please wait while your order is processed. Do not hit the back button or resubmit your order.', 'napoleonbeesupply-theme-2017' ), apply_filters( 'woocommerce_order_button_text', __( 'Place order', 'woocommerce' ) ) ); ?>
 
     </p>
 
