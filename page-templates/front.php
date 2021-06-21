@@ -59,7 +59,7 @@ if ( $hero_page_link ) {
 			<?php foreach ( $categories as $category ) : ?>
 				<?php
 				$thumbnail_ID   = get_woocommerce_term_meta( $category->term_id, 'thumbnail_id', true );
-				$category_image = wp_get_attachment_url( $thumbnail_ID );
+				$category_image = wp_get_attachment_url( $thumbnail_ID, 'medium' );
 				?>
                 <div class="hexagon-item-container">
                     <div class="product-category hexagon">
@@ -93,7 +93,7 @@ if ( $featured_products ) {
 		<?php
 		$featured_product  = wc_get_product( $featured_product_ID );
 		$featured_image_ID = nbs_field_helpers()->fields->get_field( 'featured_image', $featured_product_ID );
-		$featured_image    = wp_get_attachment_image_url( $featured_image_ID, 'full' );
+		$featured_image    = wp_get_attachment_image_url( $featured_image_ID, 'large' );
 
 		if ( $featured_image ) : ?>
             <div class="featured-product-featured-image"
