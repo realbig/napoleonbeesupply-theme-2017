@@ -39,14 +39,8 @@ if ( ! function_exists( 'foundationpress_scripts' ) ) :
 		// Enqueue the main Stylesheet.
 		wp_enqueue_style( 'nbs-style',  get_template_directory_uri() . '/dist/assets/css/' . foundationpress_asset_path('app.css'), array(), THEME_VERSION, 'all' );
 
-		// Deregister the jquery version bundled with WordPress.
-		wp_deregister_script( 'jquery' );
-
 		// Font Awesome
 		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/vendor/font-awesome/css/font-awesome.min.css', array(), '4.7.0' );
-
-		// CDN hosted jQuery placed in the header, as some plugins require that jQuery is loaded in the header.
-		wp_enqueue_script( 'jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js', array(), '3.2.1', false );
 
 		// Enqueue Founation scripts
 		wp_enqueue_script( 'nbs-script', get_template_directory_uri() . '/dist/assets/js/' . foundationpress_asset_path('app.js'), array( 'jquery' ), THEME_VERSION, true );
