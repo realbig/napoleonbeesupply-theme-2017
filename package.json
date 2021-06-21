@@ -1,7 +1,7 @@
 {
   "name": "napoleonbeesupply-theme-2017",
   "title": "NapoleonBeeSupplyTheme2017",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Theme created for the Napoleon Bee Supply website. Built off Foundation Press.",
   "main": "gulpfile.js",
   "scripts": {
