@@ -43,7 +43,7 @@ if ( ! function_exists( 'foundationpress_scripts' ) ) :
 		wp_enqueue_style( 'font-awesome', get_template_directory_uri() . '/vendor/font-awesome/css/font-awesome.min.css', array(), '4.7.0' );
 
 		// Enqueue Founation scripts
-		wp_enqueue_script( 'nbs-script', get_template_directory_uri() . '/dist/assets/js/' . foundationpress_asset_path('app.js'), array( 'jquery' ), THEME_VERSION, true );
+		wp_enqueue_script( 'nbs-script', get_template_directory_uri() . '/dist/assets/js/' . foundationpress_asset_path('app.js'), array(), THEME_VERSION, true );
 
 		// Enqueue FontAwesome from CDN. Uncomment the line below if you don't need FontAwesome.
 		//wp_enqueue_script( 'fontawesome', 'https://use.fontawesome.com/5016a31c8c.js', array(), '4.7.0', true );
