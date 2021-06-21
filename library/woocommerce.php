@@ -1,6 +1,6 @@
 <?php
 /**
- * Handles WooCommerce support/modifications.
+ * Handles Woo`Co`mmerce support/modifications.
  *
  * @since 1.0.2
  */
@@ -23,8 +23,10 @@ add_action( 'woocommerce_before_cart', 'nbs_wc_add_checkout_cart_notice', 11 );
 add_action( 'woocommerce_before_checkout_form', 'nbs_wc_add_checkout_cart_notice', 11 );
 add_filter( 'woocommerce_cart_item_class', 'nbs_wc_cart_item_class', 10, 2 );
 //add_filter( 'woocommerce_email_order_items_table', 'nbs_add_wc_order_email_sku');
-
 add_action( 'woocommerce_credit_card_form_end', 'nbs_woocommerce_credit_card_form_end', 11 );
+
+// Change number of columns on product pages
+add_filter( 'woocommerce_product_thumbnails_columns', create_function( '', 'return 3;' ) );
 
 /**
  * WooCommerce template before shop loop.
