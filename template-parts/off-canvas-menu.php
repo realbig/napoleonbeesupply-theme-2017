@@ -38,7 +38,7 @@
 				<?php foreach ( $categories as $category ) : ?>
 					<?php
 					$thumbnail_ID   = get_woocommerce_term_meta( $category->term_id, 'thumbnail_id', true );
-					$category_image = wp_get_attachment_url( $thumbnail_ID );
+					$category_image = wp_get_attachment_image_url( $thumbnail_ID, 'medium' );
 					?>
                     <div class="hexagon-item-container">
                         <a href="<?php echo get_term_link( $category ); ?>"
