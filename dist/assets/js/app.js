@@ -12000,13 +12000,19 @@ exports.Tooltip = Tooltip;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var NBS_BeeOrderForm = function () {
     function NBS_BeeOrderForm() {
         _classCallCheck(this, NBS_BeeOrderForm);
 
-        this.$orderForm = $('#nbs-bee-order-form');
+        this.$orderForm = (0, _jquery2.default)('#nbs-bee-order-form');
 
         if (!this.$orderForm.length) {
 
@@ -12028,10 +12034,10 @@ var NBS_BeeOrderForm = function () {
         key: 'quantityChange',
         value: function quantityChange() {
 
-            var product = $(this).attr('data-product');
-            var $addToCartButton = $('a.ajax_add_to_cart[data-product_id="' + product + '"]');
+            var product = (0, _jquery2.default)(this).attr('data-product');
+            var $addToCartButton = (0, _jquery2.default)('a.ajax_add_to_cart[data-product_id="' + product + '"]');
 
-            $addToCartButton.attr('data-quantity', $(this).val());
+            $addToCartButton.attr('data-quantity', (0, _jquery2.default)(this).val());
         }
     }]);
 
@@ -12073,13 +12079,19 @@ _jquery2.default.ajax({
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var NBS_SiteSearch = function () {
     function NBS_SiteSearch() {
         _classCallCheck(this, NBS_SiteSearch);
 
-        this.$searchForm = $('#site-search');
+        this.$searchForm = (0, _jquery2.default)('#site-search');
 
         if (!this.$searchForm.length) {
 
@@ -12093,14 +12105,14 @@ var NBS_SiteSearch = function () {
         key: 'searchToggleInit',
         value: function searchToggleInit() {
 
-            var $toggle = $('[data-search-toggle]');
+            var $toggle = (0, _jquery2.default)('[data-search-toggle]');
             var that = this;
 
             $toggle.click(function (e) {
 
                 e.preventDefault();
 
-                that.onToggle($(this));
+                that.onToggle((0, _jquery2.default)(this));
             });
         }
     }, {

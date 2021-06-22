@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 class NBS_BeeOrderForm {
 
     constructor() {
