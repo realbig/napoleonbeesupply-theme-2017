@@ -11,17 +11,6 @@ $product-thumbnail-sizes: (
 
 .woocommerce div.product {
 
-  // Sale
-  .onsale {
-    @include hexagon-shape;
-    border-radius: 0;
-
-    @include breakpoint(small only) {
-      left: 0.3em;
-      font-size: rem-calc(20);
-    }
-  }
-
   // Image Gallery
   div.images.woocommerce-product-gallery {
     .flex-control-thumbs {
@@ -60,4 +49,19 @@ $product-thumbnail-sizes: (
       line-height: inherit;
     }
   }
+}
+
+.woocommerce .product {
+
+  // Sale
+  .onsale {
+    @include hexagon-shape;
+    border-radius: 0;
+
+    @include breakpoint(small only) {
+      left: 0.3em;
+      font-size: rem-calc(20);
+    }
+  }
+
 }

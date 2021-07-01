@@ -154,12 +154,41 @@ $subfeatured_products_shortcode_output = $subfeatured_products_shortcode->get_co
 
 ?>
 
-<?php if ( $subfeatured_products_shortcode_output ): ?>
+<?php if ( $subfeatured_products && $subfeatured_products_shortcode_output ): ?>
     <section class="subfeatured-products subfeatured-products-count-<?php echo count( $subfeatured_products ); ?>">
 
 		<?php echo $subfeatured_products_shortcode_output; ?>
 
     </section>
+<?php endif; ?>
+
+<?php
+
+// If you pass "on_sale" to WooCommerce's shortcode function and there are no On Sale products, it shows latest products instead. So we'll grab them ourselves
+$sale_products = wc_get_product_ids_on_sale();
+
+$on_sale_product_query = new WC_Shortcode_Products( array(
+    'limit' => count( $sale_products ),
+    'columns' => count( $sale_products ),
+    'orderby' => 'date',
+    'order' => 'DESC',
+    'orderby' => 'notrealorderby', // Prevents WooCommerce from providing a default orderby. WP will fallback to something sane instead
+    'order' => 'DESC', // WooCommerce defaults this to ASC for some reason. WP uses DESC
+    'ids' => implode( ',', $sale_products ),
+) );
+
+$on_sale = $on_sale_product_query->get_content();
+
+if ( $sale_products && $on_sale ) : ?>
+
+    <section class="subfeatured-products">
+
+        <h2><?php _e( 'On Sale', 'napoleonbeesupply-theme-2017' ); ?></h2>
+
+        <?php echo $on_sale; ?>
+
+    </section>
+
 <?php endif; ?>
 
 <?php

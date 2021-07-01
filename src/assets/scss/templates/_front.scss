@@ -252,7 +252,27 @@ body.page-template-front {
 
         li.product {
 
+          .onsale {
+
+            min-height: 3em;
+            min-width: 3em;
+            font-size: .75em;
+            padding: .1em;
+
+            right: auto;
+            left: 0;
+
+          }
+
           @include xy-cell(12);
+
+          @include breakpoint(medium) {
+            @include xy-cell(6);
+          }
+  
+          @include breakpoint(large) {
+            @include xy-cell(3);
+          }
     
           .woocommerce-loop-product__title {
             font-size: 1.2rem;

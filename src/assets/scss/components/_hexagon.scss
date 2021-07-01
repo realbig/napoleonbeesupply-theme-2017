@@ -13,18 +13,18 @@
   justify-content: space-between;
 
   @include breakpoint(small only) {
-    width: 300px;
+    width: rem-calc( 300 );
     margin: 0 auto;
-    padding-bottom: 28px;
+    padding-bottom: rem-calc( 28 );
   }
 
   @include breakpoint(medium only) {
-    width: 570px;
+    width: rem-calc( 570 );
     margin: 0 auto;
   }
 
   @include breakpoint(large only) {
-    width: 750px;
+    width: rem-calc( 750 );
     margin: 0 auto;
   }
 
@@ -33,12 +33,12 @@
   }
 
   &.hexagon-grid-force-small {
-    width: 300px;
+    width: rem-calc( 300 );
     margin: 0 auto;
-    padding-bottom: 28px;
+    padding-bottom: rem-calc( 28 );
 
     .#{$item-container-class} {
-      height: 135px;
+      height: rem-calc( 135 );
       flex-basis: auto !important;
 
       &:nth-child(3n + 1) {
@@ -59,11 +59,11 @@
 
   .#{$item-container-class} {
     @include breakpoint(small only) {
-      height: 135px;
+      height: rem-calc( 135 );
     }
 
     @include breakpoint(medium only) {
-      height: 160px;
+      height: rem-calc( 160 );
     }
 
     // Small
@@ -84,7 +84,7 @@
     &:nth-child(5n + 1) {
       .#{$item-class} {
         @include breakpoint(medium only) {
-          margin-right: 10px;
+          margin-right: rem-calc( 10 );
           float: right;
         }
       }
@@ -93,7 +93,7 @@
     &:nth-child(5n + 2) {
       .#{$item-class} {
         @include breakpoint(medium only) {
-          margin-left: 10px;
+          margin-left: rem-calc( 10 );
           float: left;
         }
       }
@@ -118,17 +118,17 @@
   display: block;
   position: relative;
   color: $white !important;
-  width: 142px;
-  height: 163px;
+  width: rem-calc( 142 );
+  height: rem-calc( 163 );
 
   @include breakpoint(medium) {
-    width: 167px;
-    height: 192px;
+    width: rem-calc( 167 );
+    height: rem-calc( 192 );
   }
 
   &.hexagon-force-small {
-    width: 142px;
-    height: 163px;
+    width: rem-calc( 142 );
+    height: rem-calc( 163 );
   }
 
   &:hover {
