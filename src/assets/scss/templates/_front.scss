@@ -240,43 +240,80 @@ body.page-template-front {
 
   // Sub Featured
   .subfeatured-products {
+
     @include xy-grid;
     @include xy-grid-container($width: $grid-row-width-wide);
 
-    .subfeatured-product {
-      @include xy-cell(12);
+    .woocommerce {
 
-      h1 {
-        font-size: 1.2rem;
+      width: 100%;
+
+      ul.products {
+
+        li.product {
+
+          @include xy-cell(12);
+    
+          .woocommerce-loop-product__title {
+            font-size: 1.2rem;
+          }
+
+          a.woocommerce-LoopProduct-link {
+
+            img {
+              @include hexagon;
+            }
+      
+          }
+
+          .price {
+
+            color: inherit;
+            font-weight: inherit;
+            font-size: inherit;
+            
+          }
+
+        }
+
+        &.columns-2 {
+
+          li.product {
+            @include breakpoint(medium) {
+              @include xy-cell(6);
+            }
+          }
+          
+        }
+
+        &.columns-3 {
+
+          li.product {
+            @include breakpoint(medium) {
+              @include xy-cell(4);
+            }
+          }
+
+        }
+
+        &.columns-4 {
+
+          li.product {
+            @include breakpoint(medium) {
+              @include xy-cell(6);
+            }
+    
+            @include breakpoint(large) {
+              @include xy-cell(3);
+            }
+          }
+
+        }
+
       }
+
     }
 
-    &.subfeatured-products-count-2 {
-      .subfeatured-product {
-        @include breakpoint(medium) {
-          @include xy-cell(6);
-        }
-      }
-    }
-
-    &.subfeatured-products-count-3 {
-      .subfeatured-product {
-        @include breakpoint(medium) {
-          @include xy-cell(4);
-        }
-      }
-    }
-
-    &.subfeatured-products-count-4 {
-      .subfeatured-product {
-        @include breakpoint(medium) {
-          @include xy-cell(6);
-        }
-
-        @include breakpoint(large) {
-          @include xy-cell(3);
-        }
-      }
-    }
   }
+
 }

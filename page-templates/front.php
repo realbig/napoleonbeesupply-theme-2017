@@ -138,40 +138,26 @@ $subfeatured_products = get_posts( array(
 	'numberposts' => 4,
 	'meta_key'    => 'nbs_featured_status',
 	'meta_value'  => 'sub_featured',
+    'fields' => 'ids',
 ) );
+
+$subfeatured_products_shortcode = new WC_Shortcode_Products( array(
+    'limit' => count( $subfeatured_products ),
+    'columns' => count( $subfeatured_products ),
+    'ids' => implode( ',', $subfeatured_products ),
+    'orderby' => 'notrealorderby', // Prevents WooCommerce from providing a default orderby. WP will fallback to something sane instead
+    'order' => 'DESC', // WooCommerce defaults this to ASC for some reason. WP uses DESC
+    'suppress_filters' => true,
+) );
+
+$subfeatured_products_shortcode_output = $subfeatured_products_shortcode->get_content();
+
 ?>
 
-<?php if ( $subfeatured_products ): ?>
+<?php if ( $subfeatured_products_shortcode_output ): ?>
     <section class="subfeatured-products subfeatured-products-count-<?php echo count( $subfeatured_products ); ?>">
 
-		<?php foreach ( $subfeatured_products as $product ) : ?>
-
-			<?php $product = wc_get_product( $product ); ?>
-
-            <article class="subfeatured-product">
-                <div class="featured-product-image">
-                    <div class="featured-product-image-container hexagon hexagon-no-cover">
-						<?php echo $product->get_image(); ?>
-                    </div>
-
-                    <h1 class="featured-product-title">
-						<?php echo $product->get_title(); ?>
-                    </h1>
-
-                    <p class="featured-product-price">
-						<?php echo $product->get_price_html(); ?>
-                    </p>
-
-                    <div class="featured-product-excerpt">
-						<?php echo $product->get_short_description(); ?>
-                    </div>
-
-                    <a href="<?php echo $product->get_permalink(); ?>" class="button primary">
-                        View Product
-                    </a>
-                </div>
-            </article>
-		<?php endforeach; ?>
+		<?php echo $subfeatured_products_shortcode_output; ?>
 
     </section>
 <?php endif; ?>
