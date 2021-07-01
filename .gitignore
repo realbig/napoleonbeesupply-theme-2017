@@ -9,3 +9,4 @@ config.yml
 packaged/
 wpcs/
 .idea/
+.vscode/launch.json
