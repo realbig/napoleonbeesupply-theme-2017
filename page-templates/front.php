@@ -163,4 +163,27 @@ $subfeatured_products_shortcode_output = $subfeatured_products_shortcode->get_co
 <?php endif; ?>
 
 <?php
+
+$new_product_query = new WC_Shortcode_Products( array(
+    'limit' => 4,
+    'columns' => 4,
+    'orderby' => 'date',
+    'order' => 'DESC',
+) );
+
+$new_products = $new_product_query->get_content();
+
+if ( $new_products ) : ?>
+
+    <section class="subfeatured-products">
+
+        <h2><?php _e( 'New Items', 'napoleonbeesupply-theme-2017' ); ?></h2>
+
+        <?php echo $new_products; ?>
+
+    </section>
+
+<?php endif; ?>
+
+<?php
 get_footer();
