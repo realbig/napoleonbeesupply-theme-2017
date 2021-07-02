@@ -162,6 +162,83 @@ $subfeatured_products_shortcode_output = $subfeatured_products_shortcode->get_co
     </section>
 <?php endif; ?>
 
+<?php 
+
+$promotions = nbs_field_helpers()->fields->get_meta_field( 'promotions' );
+
+if ( $promotions && is_array( $promotions ) ) : 
+
+    foreach ( $promotions as $index => $promotion ) : ?> 
+
+        <section class="promotions grid-container">
+
+            <div class="grid-x grid-margin-x">
+
+                <div class="cell small-12 large-4<?php echo ( ( ( $index + 1 ) % 2 == 0 ) ? ' large-order-2' : '' ); ?>">
+
+                    <h2><?php echo esc_html( $promotion['title'] ); ?></h2>
+
+                    <?php echo apply_filters( 'the_content', $promotion['content'] ); ?>
+
+                </div>
+
+                <div class="cell small-12 large-8<?php echo ( ( ( $index + 1 ) % 2 == 0 ) ? ' large-order-1' : '' ); ?>">
+
+                    <div class="subfeatured-products">
+
+                        <?php
+
+                            if ( $promotion['category'] ) {
+
+                                $products_in_category_query = new WP_Query( array(
+                                    'posts_per_page' => 3,
+                                    'post_type' => 'product',
+                                    'fields' => 'ids',
+                                    'tax_query' => array(
+                                        'relation' => 'AND',
+                                        array(
+                                            'taxonomy' => 'product_cat',
+                                            'field' => 'term_id',
+                                            'terms' => $promotion['category'],
+                                        ),
+                                    )
+                                ) );
+
+                                $products_in_category_shortcode = new WC_Shortcode_Products( array(
+                                    'limit' => count( $products_in_category_query->posts ),
+                                    'columns' => count( $products_in_category_query->posts ),
+                                    'ids' => implode( ',', $products_in_category_query->posts ),
+                                    'orderby' => 'notrealorderby', // Prevents WooCommerce from providing a default orderby. WP will fallback to something sane instead
+                                    'order' => 'DESC', // WooCommerce defaults this to ASC for some reason. WP uses DESC
+                                    'suppress_filters' => true,
+                                ) );
+
+                                $products_in_category = $products_in_category_shortcode->get_content();
+
+                                if ( $products_in_category_query->have_posts() && $products_in_category ) {
+
+                                    echo $products_in_category;
+
+                                }
+
+                            }
+
+                        ?>
+
+                    </div>
+
+                </div>
+                
+            </div>
+
+        </section>
+
+    <?php endforeach;
+
+endif;
+
+?>
+
 <?php
 
 // If you pass "on_sale" to WooCommerce's shortcode function and there are no On Sale products, it shows latest products instead. So we'll grab them ourselves

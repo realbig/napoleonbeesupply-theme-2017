@@ -336,4 +336,10 @@ body.page-template-front {
 
   }
 
+  .promotions {
+
+    @include xy-grid-container($width: $grid-row-width-wide);
+
+  }
+
 }

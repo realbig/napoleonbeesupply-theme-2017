@@ -36,6 +36,13 @@ function nbs_add_mb_home() {
 		'nbs_mb_home_settings',
 		'page'
 	);
+
+	add_meta_box(
+		'nbs-promotion-block',
+		__( 'Promotion Blocks', 'napoleonbeesupply-theme-2017' ),
+		'nbs_mb_promotions_block',
+		'page'
+	);
 }
 
 /**
@@ -95,4 +102,53 @@ function nbs_mb_home_settings() {
 	) );
 
 	nbs_field_helpers()->fields->save->initialize_fields( 'home' );
+}
+
+/**
+ * Repeater field for outputting Promotion Blocks
+ * These will alternate left/right down the page
+ *
+ * @since	{{VERSION}}
+ * @return  void
+ */
+function nbs_mb_promotions_block() {
+
+	$options = get_terms( array(
+		'hide_empty' => true,
+		'taxonomy' => $product_cat,
+	) );
+
+	$options = wp_list_pluck( $options, 'name', 'term_id' );
+
+	nbs_field_helpers()->fields->do_field_repeater( 'promotions', array(
+		'group' => 'promotions',
+		'fields' => array(
+			'title' => array(
+				'type' => 'text',
+				'args' => array(
+					'label' => __( 'Title', 'napoleonbeesupply-theme-2017' ),
+				)
+			),
+			'content' => array(
+				'type' => 'textarea',
+				'args' => array(
+					'label' => __( 'Content', 'napoleanbeesupply-theme-2017' ),
+					'wysiwyg' => true,
+				),
+			),
+			'category' => array(
+				'type' => 'select',
+				'args' => array(
+					'label' => __( 'Product Category to show', 'napoleonbeesupply-theme-2017' ),
+					'options' => $options,
+					'select2_options' => array(
+						'placeholder' => __( 'Select a Category', 'napoleonbeesupply-theme-2017' ),
+					),
+				),
+			)
+		),
+	) );
+
+	nbs_field_helpers()->fields->save->initialize_fields( 'promotions' );
+
 }
