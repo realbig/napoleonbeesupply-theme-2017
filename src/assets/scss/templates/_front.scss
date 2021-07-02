@@ -211,6 +211,17 @@ body.page-template-front {
       .featured-product-title {
         line-height: 1;
         font-size: 1.4rem;
+
+          a {
+
+            color: $brown;
+
+            &:hover, &:focus {
+              color: scale-color( $brown, $lightness: -14% );
+            }
+
+          }
+
       }
 
       .featured-product-price {
@@ -225,15 +236,13 @@ body.page-template-front {
         }
       }
 
-      .add_to_cart_inline {
-        .button {
-          @include button-style(
-                  $background: $tertiary-color,
-                  $background-hover: lighten($tertiary-color, 10%)
-          );
-          font-size: map-get($button-sizes, large);
-          margin-bottom: 0;
-        }
+      .add_to_cart_button {
+        @include button-style(
+                $background: $tertiary-color,
+                $background-hover: lighten($tertiary-color, 10%)
+        );
+        font-size: map-get($button-sizes, large);
+        margin-bottom: 0;
       }
     }
   }

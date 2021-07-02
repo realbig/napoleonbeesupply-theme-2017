@@ -112,7 +112,9 @@ if ( $featured_products ) {
 
                 <div class="featured-product-content">
                     <h1 class="featured-product-title">
-                        Featured: <?php echo $featured_product->get_title(); ?>
+                        <a href="<?php echo $featured_product->get_permalink(); ?>">
+                            Featured: <?php echo $featured_product->get_title(); ?>
+                        </a>
                     </h1>
 
                     <p class="featured-product-price">
@@ -123,9 +125,16 @@ if ( $featured_products ) {
 						<?php echo $featured_product->get_short_description(); ?>
                     </div>
 
-                    <a href="<?php echo $featured_product->get_permalink(); ?>" class="button large tertiary">
-                        View Product
-                    </a>
+                    <?php
+                    
+                        global $product;
+
+                        $product = $featured_product;
+
+                        woocommerce_template_loop_add_to_cart();
+
+                    ?>
+
                 </div>
             </div>
         </article>
