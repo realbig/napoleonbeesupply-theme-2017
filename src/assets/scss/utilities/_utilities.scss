@@ -11,3 +11,19 @@
   background: $color; /* The fallback for ancient things */
   background: rgba( $color, $opacity );
 }
+
+@function get-last-index( $map ) {
+
+  @each $key, $value in $map {
+
+    $index: index( ( $map ), ( $key $value ) );
+    
+    @if ( $index == length( $map ) ) {
+      @return $key;
+    }
+
+  }
+
+  @return false;
+
+}

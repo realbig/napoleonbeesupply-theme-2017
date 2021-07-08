@@ -349,6 +349,43 @@ body.page-template-front {
 
     @include xy-grid-container($width: $grid-row-width-wide);
 
+    @include breakpoint( large ) {
+
+      // Product container on large screens only for odd rows
+      .large-8:not( .large-order-1 ) {
+
+        // NOTE: If anything above large gets added to the $grid-margin-gutters variable, this code will need adjusting
+        $gutters: $grid-margin-gutters;
+        @each $size, $value in $gutters {
+
+            @if ( $size != 'small' ) {
+
+              $gutters: map-merge( $gutters, ( $size: ( $value + 10 ) ) );
+
+            }
+
+        }
+
+        $last-index: get-last-index( $gutters );
+
+        @if ( $last-index ) {
+
+          $gutter: map-get( $gutters, $last-index );
+
+          margin-left: rem-calc( ( $gutter / 2 ) );
+
+          $full-gutter: ( ( $gutter / 2 ) + ( ( map-get( $grid-margin-gutters, $last-index ) / 2 ) ) );
+
+          $percentage: ( 8 / 12 ) * 100%;
+
+          width: calc( #{ $percentage } - #{ rem-calc( $full-gutter ) } );
+
+        }
+
+      }
+
+    }
+
   }
 
 }
