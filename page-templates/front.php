@@ -141,36 +141,6 @@ if ( $featured_products ) {
     </section>
 <?php endif; ?>
 
-<?php
-$subfeatured_products = get_posts( array(
-	'post_type'   => 'product',
-	'numberposts' => 4,
-	'meta_key'    => 'nbs_featured_status',
-	'meta_value'  => 'sub_featured',
-    'fields' => 'ids',
-) );
-
-$subfeatured_products_shortcode = new WC_Shortcode_Products( array(
-    'limit' => count( $subfeatured_products ),
-    'columns' => count( $subfeatured_products ),
-    'ids' => implode( ',', $subfeatured_products ),
-    'orderby' => 'notrealorderby', // Prevents WooCommerce from providing a default orderby. WP will fallback to something sane instead
-    'order' => 'DESC', // WooCommerce defaults this to ASC for some reason. WP uses DESC
-    'suppress_filters' => true,
-) );
-
-$subfeatured_products_shortcode_output = $subfeatured_products_shortcode->get_content();
-
-?>
-
-<?php if ( $subfeatured_products && $subfeatured_products_shortcode_output ): ?>
-    <section class="subfeatured-products subfeatured-products-count-<?php echo count( $subfeatured_products ); ?>">
-
-		<?php echo $subfeatured_products_shortcode_output; ?>
-
-    </section>
-<?php endif; ?>
-
 <?php 
 
 $promotions = nbs_field_helpers()->fields->get_meta_field( 'promotions' );
