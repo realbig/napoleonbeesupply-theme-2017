@@ -108,7 +108,7 @@ function nbs_mb_home_settings() {
  * Repeater field for outputting Promotion Blocks
  * These will alternate left/right down the page
  *
- * @since	{{VERSION}}
+ * @since	1.1.0
  * @return  void
  */
 function nbs_mb_promotions_block() {
