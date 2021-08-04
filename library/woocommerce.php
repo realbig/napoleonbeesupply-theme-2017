@@ -17,6 +17,12 @@ add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_close_div', 99 );
 add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_close_div', 100 );
 add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_close_div', 101 );
 
+if ( is_active_sidebar( 'shop-widgets' ) ) {
+    add_action( 'woocommerce_before_shop_loop', 'nbs_add_shop_sidebar', 102 );
+    add_action( 'woocommerce_after_shop_loop', 'nbs_wc_template_close_div', 1 );
+    add_action( 'woocommerce_after_shop_loop', 'nbs_wc_template_close_div', 2 );
+}
+
 add_filter( 'woocommerce_price_format', 'nbs_wc_price_format' );
 add_filter( 'pre_get_posts', 'nbs_bee_order_form_order' );
 add_action( 'woocommerce_before_cart', 'nbs_wc_add_checkout_cart_notice', 11 );
@@ -55,25 +61,8 @@ function nbs_wc_template_archive_header() {
     <h1 class="page-title"><?php woocommerce_page_title(); ?></h1>
 
 
-    <?php do_action( 'woocommerce_archive_description' ); ?>
-
-    <?php
-    $sub_categories = get_terms( array(
-        'taxonomy' => 'product_cat',
-        'parent' => get_queried_object_id(),
-    ));
-
-    if ( $sub_categories ) : ?>
-        <ul class="woocommerce-subcategories-nav">
-            <?php foreach ( $sub_categories as $category ) : ?>
-                <li>
-                    <a href="<?php echo get_term_link( $category ); ?>">
-                        <?php echo $category->name; ?>
-                    </a>
-                </li>
-            <?php endforeach; ?>
-        </ul>
-	<?php endif;
+    <?php do_action( 'woocommerce_archive_description' );
+    
 }
 
 /**
@@ -87,6 +76,30 @@ function nbs_wc_template_archive_header_results() {
 	?>
     <div class="woocommerce-archive-header-results">
 	<?php
+}
+
+/**
+ * Add Shop Sidebar to the primary Product Archive
+ *
+ * @since   {{VERSION}}
+ * @return  void
+ */
+function nbs_add_shop_sidebar() {
+
+    if ( ! is_post_type_archive( 'product' ) ) return;
+
+    ?>
+
+    <div class="row">
+
+        <div class="small-12 medium-3 columns shop-sidebar">
+            <?php dynamic_sidebar( 'shop-widgets' ); ?>
+        </div>
+
+        <div class="small-12 medium-9 columns">
+
+    <?php
+
 }
 
 /**
