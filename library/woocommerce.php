@@ -233,3 +233,37 @@ function nbs_woocommerce_credit_card_form_end( $id ) {
     <?php
 
 }
+
+/**
+ * Remove Bundled Product Images from Product Single
+ *
+ * @param   string           $html          Image HTML
+ * @param   integer          $product_id    Product ID of the Bundled Item
+ * @param   WC_Bundled_Item  $bundled_item  Bundled Item object
+ *
+ * @since   {{VERSION}}
+ * @return  string                          Image HTML
+ */
+add_filter( 'woocommerce_bundled_product_image_html', function( $html, $product_id, $bundled_item ) {
+
+    return '';
+
+}, 10, 3 );
+
+/**
+ * Remove Bundled Product Images from the Cart
+ *
+ * @param   string  $html           Image HTML
+ * @param   array   $cart_item      Cart Item Data
+ * @param   string  $cart_item_key  Cart Item Index
+ *
+ * @since   {{VERSION}}
+ * @return  string                  Image HTML
+ */
+add_filter( 'woocommerce_cart_item_thumbnail', function( $html, $cart_item, $cart_item_key ) {
+
+    if ( ! isset( $cart_item['bundled_item_id'] ) || ! $cart_item['bundled_item_id'] ) return $html;
+
+    return '';
+
+}, 10, 3 );
