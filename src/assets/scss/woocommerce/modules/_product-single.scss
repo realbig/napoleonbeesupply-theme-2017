@@ -65,3 +65,31 @@ $product-thumbnail-sizes: (
   }
 
 }
+
+.woocommerce.single-product {
+
+  div.bundled_product_summary:not(.thumbnail_hidden) .details {
+
+    float: none;
+    width: 100%;
+    padding: 0;
+
+    .cart {
+      margin-bottom: 0;
+    }
+
+    .product_title {
+      font-size: 1rem;
+    }
+
+    .price {
+      font-size: 1.25rem;
+    }
+
+    .quantity {
+      margin-top: 0;
+    }
+
+  }
+
+}
