@@ -19,12 +19,12 @@ add_action( 'woocommerce_before_shop_loop', 'nbs_wc_template_close_div', 101 );
 
 if ( is_active_sidebar( 'shop-widgets' ) ) {
     add_action( 'woocommerce_before_shop_loop', 'nbs_add_shop_sidebar', 102 );
-    add_action( 'woocommerce_after_shop_loop', 'nbs_wc_template_close_div', 1 );
     add_action( 'woocommerce_after_shop_loop', 'nbs_wc_template_close_div', 2 );
+    add_action( 'woocommerce_after_shop_loop', 'nbs_wc_template_close_div', 3 );
 }
 
 add_filter( 'woocommerce_price_format', 'nbs_wc_price_format' );
-add_filter( 'pre_get_posts', 'nbs_bee_order_form_order' );
+//add_filter( 'pre_get_posts', 'nbs_bee_order_form_order' );
 add_action( 'woocommerce_before_cart', 'nbs_wc_add_checkout_cart_notice', 11 );
 add_action( 'woocommerce_before_checkout_form', 'nbs_wc_add_checkout_cart_notice', 11 );
 add_filter( 'woocommerce_cart_item_class', 'nbs_wc_cart_item_class', 10, 2 );
@@ -32,7 +32,9 @@ add_filter( 'woocommerce_cart_item_class', 'nbs_wc_cart_item_class', 10, 2 );
 add_action( 'woocommerce_credit_card_form_end', 'nbs_woocommerce_credit_card_form_end', 11 );
 
 // Change number of columns on product pages
-add_filter( 'woocommerce_product_thumbnails_columns', create_function( '', 'return 3;' ) );
+add_filter( 'woocommerce_product_thumbnails_columns', function( $columns ) {
+    return 3;
+} );
 
 /**
  * WooCommerce template before shop loop.
@@ -133,7 +135,10 @@ function nbs_wc_price_format( $format ) {
  */
 function nbs_bee_order_form_order( $wp_query ) {
 
-	if ( is_admin() || ! $wp_query->is_main_query() || get_term_meta( get_queried_object()->term_id, 'nbs_bees_category', true ) !== '1' ) {
+	if ( is_admin() || 
+        ! $wp_query->is_main_query() || 
+        ( is_a( $wp_query->queried_object, 'WP_Term' ) && get_term_meta( get_queried_object()->term_id, 'nbs_bees_category', true ) !== '1' ) 
+    ) {
 
 		return;
 	}
@@ -245,4 +250,42 @@ function nbs_woocommerce_credit_card_form_end( $id ) {
 
     <?php
 
+}
+
+if ( class_exists( 'FacetWP' ) && is_active_sidebar( 'shop-widgets' ) ) {
+
+    add_action( 'woocommerce_before_shop_loop', function() {
+
+        if ( ! is_post_type_archive( 'product' ) ) return;
+
+        // Remove default pagination
+	    remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
+
+        echo '<div class="facetwp-template">';
+
+    }, 103 );
+
+    // Force query to be recognized as FacetWP
+    add_action( 'pre_get_posts', function( $query ) {
+
+        if ( is_admin() ) return;
+
+        if ( $query->get( 'post_type' ) !== 'product' ) return;
+
+        if ( is_a( $query->queried_object, 'WP_Term' ) ) return;
+
+        $query->set( 'facetwp', true );
+
+    } );
+
+    add_action( 'woocommerce_after_shop_loop', function() {
+
+        if ( ! is_post_type_archive( 'product' ) ) return;
+
+        echo '</div>';
+		
+		echo do_shortcode( '[facetwp pager="true"]' );
+		
+	}, 1 );
+	
 }
