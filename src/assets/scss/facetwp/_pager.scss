@@ -1,0 +1,28 @@
+// Results Count Facet
+.facetwp-facet.facetwp-type-pager {
+
+    &.facetwp-facet-results_count {
+
+        display: inline-block;
+        margin-bottom: 0;
+
+    }
+
+}
+
+// Pagination
+.facetwp-pager {
+
+    @include pagination-container;
+
+    .active {
+        @include pagination-item-current;
+    }
+
+    a {
+        display: inline;
+    }
+
+    text-align: center;
+
+}

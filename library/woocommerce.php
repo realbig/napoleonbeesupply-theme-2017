@@ -261,7 +261,13 @@ if ( class_exists( 'FacetWP' ) && is_active_sidebar( 'shop-widgets' ) ) {
         // Remove default pagination
 	    remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
 
-    }, 103 );
+        remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+
+        add_action( 'woocommerce_before_shop_loop', function() {
+            echo do_shortcode( '[facetwp facet="results_count"]' );
+        }, 20 );
+
+    }, 10 );
 
     // Force query to be recognized as FacetWP
     add_action( 'pre_get_posts', function( $query ) {
