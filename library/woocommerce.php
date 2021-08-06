@@ -88,8 +88,6 @@ function nbs_wc_template_archive_header_results() {
  */
 function nbs_add_shop_sidebar() {
 
-    if ( ! is_post_type_archive( 'product' ) ) return;
-
     ?>
 
     <div class="row">
@@ -256,8 +254,6 @@ if ( class_exists( 'FacetWP' ) && is_active_sidebar( 'shop-widgets' ) ) {
 
     add_action( 'woocommerce_before_shop_loop', function() {
 
-        if ( ! is_post_type_archive( 'product' ) ) return;
-
         // Remove default pagination
 	    remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination', 10 );
 
@@ -269,20 +265,7 @@ if ( class_exists( 'FacetWP' ) && is_active_sidebar( 'shop-widgets' ) ) {
 
     }, 10 );
 
-    // Force query to be recognized as FacetWP
-    add_action( 'pre_get_posts', function( $query ) {
-
-        if ( is_admin() ) return;
-
-        if ( $query->get( 'post_type' ) !== 'product' ) return;
-
-        if ( is_a( $query->queried_object, 'WP_Term' ) ) return;
-
-    } );
-
     add_action( 'woocommerce_after_shop_loop', function() {
-
-        if ( ! is_post_type_archive( 'product' ) ) return;
 		
 		echo do_shortcode( '[facetwp pager="true"]' );
 		
