@@ -168,6 +168,8 @@ body.page-template-front {
       @include xy-grid;
       @include xy-cell;
       align-items: center;
+      justify-content: center;
+      margin: 0 auto;
 
       @include breakpoint(medium) {
         @include xy-cell($size: 8, $gutter-output: false);
