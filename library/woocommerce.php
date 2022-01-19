@@ -83,7 +83,7 @@ function nbs_wc_template_archive_header_results() {
 /**
  * Add Shop Sidebar to the primary Product Archive
  *
- * @since   {{VERSION}}
+ * @since   1.1.1
  * @return  void
  */
 function nbs_add_shop_sidebar() {
@@ -280,7 +280,7 @@ if ( class_exists( 'FacetWP' ) && is_active_sidebar( 'shop-widgets' ) ) {
  * @param   integer          $product_id    Product ID of the Bundled Item
  * @param   WC_Bundled_Item  $bundled_item  Bundled Item object
  *
- * @since   {{VERSION}}
+ * @since   1.1.1
  * @return  string                          Image HTML
  */
 add_filter( 'woocommerce_bundled_product_image_html', function( $html, $product_id, $bundled_item ) {
@@ -296,7 +296,7 @@ add_filter( 'woocommerce_bundled_product_image_html', function( $html, $product_
  * @param   array   $cart_item      Cart Item Data
  * @param   string  $cart_item_key  Cart Item Index
  *
- * @since   {{VERSION}}
+ * @since   1.1.1
  * @return  string                  Image HTML
  */
 add_filter( 'woocommerce_cart_item_thumbnail', function( $html, $cart_item, $cart_item_key ) {
