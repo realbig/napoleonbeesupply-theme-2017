@@ -58,7 +58,7 @@ function nbs_mb_home_settings() {
 		'numberposts' => - 1,
 	) );
 
-	$hero_page_options = array();
+	$hero_page_options = array( array( 'value' => '0', 'text' => "Don't show a button" ) );
 
 	foreach ( $pages as $page ) {
 
