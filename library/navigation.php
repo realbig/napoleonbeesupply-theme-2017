@@ -50,7 +50,7 @@ if ( ! function_exists( 'foundationpress_top_bar_r' ) ) {
                 <a href="<?php echo wc_get_cart_url(); ?>" class="woocommerce-cart nav-icon" aria-label="Shopping Cart"
                    title="Shopping Cart">
                     <span class="fa fa-shopping-cart"></span>
-                    &nbsp;&nbsp;$<?php echo WC()->cart->cart_contents_total; ?>
+                    &nbsp;&nbsp;<?php echo wc_price( WC()->cart->cart_contents_total ); ?>
                 </a>
             </div>
 
