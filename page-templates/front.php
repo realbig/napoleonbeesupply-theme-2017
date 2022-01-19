@@ -23,6 +23,26 @@ if ( $hero_page_link ) {
 			break;
 	}
 }
+
+$hero_page_link_2 = nbs_field_helpers()->fields->get_meta_field( 'hero_page_link_2' );
+
+if ( $hero_page_link_2 ) {
+
+	$hero_page_link_2_parts = explode( ':::', $hero_page_link_2 );
+
+	switch ( $hero_page_link_2_parts[0] ) {
+
+		case 'product_cat':
+
+			$hero_page_link_2 = get_term_link( (int) $hero_page_link_2_parts[1], 'product_cat' );
+			break;
+
+		case 'page':
+
+			$hero_page_link_2 = get_permalink( $hero_page_link_2_parts[1] );
+			break;
+	}
+}
 ?>
 
     <header class="front-hero" role="banner"
@@ -39,6 +59,14 @@ if ( $hero_page_link ) {
 						<?php echo nbs_field_helpers()->fields->get_meta_field( 'hero_page_link_text' ); ?>
                     </a>
 				<?php endif; ?>
+
+                <?php if ( $hero_page_link_2 ) : ?>
+                    <a role="button" class="large button"
+                       href="<?php echo esc_url_raw( $hero_page_link_2 ); ?>">
+						<?php echo nbs_field_helpers()->fields->get_meta_field( 'hero_page_link_2_text' ); ?>
+                    </a>
+				<?php endif; ?>
+
             </div>
         </div>
 
