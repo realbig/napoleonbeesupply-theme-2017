@@ -107,7 +107,7 @@ function nbs_mb_home_settings() {
 		'input_class' => 'regular-text',
 	) );
 
-	nbs_field_helpers()->fields->do_field_select( 'hero_page_link_2', array(
+	nbs_field_helpers()->fields->do_field_text( 'hero_page_link_2', array(
 		'group'       => 'home',
 		'label'       => 'Hero Page Link 2',
 		'input_class' => 'regular-text',
