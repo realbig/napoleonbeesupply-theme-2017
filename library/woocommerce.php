@@ -306,3 +306,24 @@ add_filter( 'woocommerce_cart_item_thumbnail', function( $html, $cart_item, $car
     return '';
 
 }, 10, 3 );
+
+add_filter( 'do_shortcode_tag', 'nbs_fix_products_shortcode_output', 10, 4 );
+
+/**
+ * Fix staggered output of the [products] shortcode
+ *
+ * @param   string  $output  Shortcode output
+ * @param   string  $tag     Shortcode tag
+ * @param   array   $attr    Shortcode attributes array or empty string
+ * @param   array   $m       Regular expression match array
+ *
+ * @since   {{VERSION}}
+ * @return  string           Shortcode output
+ */
+function nbs_fix_products_shortcode_output( $output, $tag, $attr, $m ) {
+
+    if ( strtolower( $tag ) != 'products' ) return $output;
+
+    return preg_replace( '/\t|\n/sim', '', $output );
+
+}
