@@ -317,7 +317,7 @@ add_filter( 'do_shortcode_tag', 'nbs_fix_products_shortcode_output', 10, 4 );
  * @param   array   $attr    Shortcode attributes array or empty string
  * @param   array   $m       Regular expression match array
  *
- * @since   {{VERSION}}
+ * @since   1.1.3
  * @return  string           Shortcode output
  */
 function nbs_fix_products_shortcode_output( $output, $tag, $attr, $m ) {

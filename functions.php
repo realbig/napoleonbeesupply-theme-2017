@@ -14,7 +14,7 @@
  * @since FoundationPress 1.0.0
  */
 
-define( 'THEME_VERSION', '1.0.7' );
+define( 'THEME_VERSION', '1.1.3' );
 
 /** Various clean up functions */
 require_once( 'library/cleanup.php' );
