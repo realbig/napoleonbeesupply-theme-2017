@@ -29,7 +29,7 @@
     "grunt": "^1.4.1",
     "grunt-contrib-compress": "^1.4.3",
     "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^3.1.0",
+    "gulp-autoprefixer": "^8.0.0",
     "gulp-babel": "^6.1.2",
     "gulp-clean-css": "^3.3.1",
     "gulp-cli": "^1.2.1",
